@@ -11,6 +11,8 @@ import urllib3
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from collections import defaultdict
+
 
 # Suppress SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
