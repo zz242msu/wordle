@@ -1,0 +1,14 @@
+name: wordle_solver_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - requests
+  - pip
+  - pip:
+    - urllib3
