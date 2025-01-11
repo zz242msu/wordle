@@ -277,7 +277,8 @@ class WordleSolverRDL(WordleSolverBase):
     def train_simulated_games(self):
         print("Training RDL model...")
         batch_size = 512
-        num_epochs = 20
+        # num_epochs = 20
+        num_epochs = 40 # 增加训练轮数
         valid_targets = random.sample(self.word_list, 5000)  # 保持原有训练集大小
 
         # # 添加学习率衰减策略
