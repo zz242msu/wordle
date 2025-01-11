@@ -157,18 +157,34 @@ class WordleSolverRDL(WordleSolverBase):
     def __init__(self, seed=None):
         super().__init__(seed)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        # self.model = nn.Sequential(
+        #     nn.Linear(130, 256),
+        #     nn.ReLU(),
+        #     nn.Dropout(0.2),
+        #     nn.Linear(256, 128),
+        #     nn.ReLU(),
+        #     nn.Dropout(0.2),
+        #     nn.Linear(128, 64),
+        #     nn.ReLU(),
+        #     nn.Linear(64, len(self.word_list))
+        # ).to(self.device)
+        # 模型架构改进
         self.model = nn.Sequential(
-            nn.Linear(130, 256),
+            nn.Linear(130, 512),  # 增大第一层
             nn.ReLU(),
-            nn.Dropout(0.2),
+            nn.Dropout(0.3),
+            nn.Linear(512, 256),  # 增加中间层容量
+            nn.ReLU(),
+            nn.Dropout(0.3),
             nn.Linear(256, 128),
             nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Linear(64, len(self.word_list))
+            nn.Linear(128, len(self.word_list))
         ).to(self.device)
-        self.optimizer = optim.Adam(self.model.parameters(), lr=0.001, weight_decay=1e-5)
+        # self.optimizer = optim.Adam(self.model.parameters(), lr=0.001, weight_decay=1e-5)
+        # 使用更强的优化器
+        self.optimizer = optim.AdamW(self.model.parameters(), 
+                                    lr=0.002,  # 略微提高初始学习率
+                                    weight_decay=1e-4)  # 增加正则化
         self.loss_fn = nn.CrossEntropyLoss()
         self.train_simulated_games()
 
@@ -205,7 +221,7 @@ class WordleSolverRDL(WordleSolverBase):
                         batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1
             return torch.from_numpy(batch_vectors).to(self.device)
 
-    # w/o 学习率衰
+    # w/o 学习率衰减
     # def train_simulated_games(self):
     #     print("Training RDL model...")
     #     batch_size = 256
@@ -260,19 +276,26 @@ class WordleSolverRDL(WordleSolverBase):
 
     def train_simulated_games(self):
         print("Training RDL model...")
-        batch_size = 256
+        batch_size = 512
         num_epochs = 20
         valid_targets = random.sample(self.word_list, 5000)  # 保持原有训练集大小
 
-        # 添加学习率衰减策略
-        scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+        # # 添加学习率衰减策略
+        # scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+        #     self.optimizer,
+        #     mode='min',
+        #     # factor=0.5,
+        #     # patience=2,
+        #     factor=0.3,    # 改为0.3让学习率下降更温和
+        #     patience=3,    # 增加耐心值
+        #     verbose=True
+        # )
+
+        # 使用更激进的学习率调度
+        scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             self.optimizer,
-            mode='min',
-            # factor=0.5,
-            # patience=2,
-            factor=0.3,    # 改为0.3让学习率下降更温和
-            patience=3,    # 增加耐心值
-            verbose=True
+            T_0=5,    # 第一次重启的周期长度
+            T_mult=2  # 每次重启后周期长度翻倍
         )
 
         for epoch in range(num_epochs):
@@ -346,6 +369,7 @@ class WordleSolverRDL(WordleSolverBase):
             best_word = max(valid_scores, key=lambda x: x[1])[0]
             print(f"Best RDL guess: {best_word}")
             return best_word
+
 
 # Benchmarking and Plotting (unchanged)
 def benchmark_solver(solver_classes, num_trials=10):
