@@ -371,7 +371,7 @@ class WordleSolverRDL(WordleSolverBase):
             print(f"Best RDL guess: {best_word}")
             return best_word
 
-# # RDL with  ResidualBlock
+# # RDL with ResidualBlock
 # class WordleSolverRDL(WordleSolverBase):
 #     def __init__(self, seed=None):
 #         super().__init__(seed)
