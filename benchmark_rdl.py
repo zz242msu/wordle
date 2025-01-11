@@ -82,7 +82,7 @@ class WordleSolverBase:
 
     def get_valid_words(self):
         valid_words = [word for word in self.word_list if self.is_word_valid(word)]
-        print(f"Found {len(valid_words)} valid words.")
+        # print(f"Found {len(valid_words)} valid words.")
         return valid_words
 
     def solve(self):
@@ -811,140 +811,31 @@ class WordleSolverRDL_B(WordleSolverBase):
 #             return best_word
 
 
-# Benchmarking and Plotting (unchanged)
-# def benchmark_solver(solver_classes, num_trials=10):
-#     results = []
-#     for trial in range(num_trials):
-#         print(f"\nStarting trial {trial + 1} of {num_trials}...")
-#         seed = random.randint(1, 1000000)  # Generate a seed for this trial
-#         print(f"Using seed: {seed}")
-#         for solver_class in solver_classes:
-#             print(f"\nTesting solver: {solver_class.__name__}")
-#             solver = solver_class(seed=seed)  # Use the same seed for all solvers
-#             start_time = time.time()
-#             success = solver.solve()
-#             end_time = time.time()
-#             results.append({
-#                 "solver": solver_class.__name__,
-#                 "success": success,
-#                 "attempts": len(solver.previous_guesses) if success else 6,
-#                 "time": end_time - start_time,
-#                 "seed": seed  # Record the seed for debugging
-#             })
-#     return pd.DataFrame(results)
-
+# Benchmarking and Plotting
 def benchmark_solver(solver_classes, num_trials=10):
     results = []
-    
-    # 使用固定的随机种子列表确保公平比较
-    random.seed(42)
-    seeds = [random.randint(0, 1000000) for _ in range(num_trials)]
-    
-    for solver_class in solver_classes:
-        class_results = []
-        for trial, seed in enumerate(seeds):
-            print(f"\nTrial {trial + 1} for {solver_class.__name__}")
-            
-            # 记录开始时间
+    for trial in range(num_trials):
+        print(f"\nStarting trial {trial + 1} of {num_trials}...")
+        seed = random.randint(1, 1000000)  # Generate a seed for this trial
+        print(f"Using seed: {seed}")
+        for solver_class in solver_classes:
+            print(f"\nTesting solver: {solver_class.__name__}")
+            solver = solver_class(seed=seed)  # Use the same seed for all solvers
             start_time = time.time()
-            
-            # 初始化求解器
-            solver = solver_class(seed=seed)
-            
-            # 测试所有可能的目标词
-            total_words = len(solver.word_list)
-            success_count = 0
-            total_attempts = 0
-            attempts_dist = defaultdict(int)  # 记录尝试次数分布
-            
-            for target_word in solver.word_list:
-                solver.reset()
-                solver.set_target(target_word)
-                
-                solved = False
-                attempts = 0
-                while attempts < 6:  # Wordle 限制6次尝试
-                    guess = solver.generate_next_guess()
-                    attempts += 1
-                    
-                    if guess == target_word:
-                        solved = True
-                        success_count += 1
-                        total_attempts += attempts
-                        attempts_dist[attempts] += 1
-                        break
-                
-                if not solved:
-                    attempts_dist['failed'] += 1
-            
-            # 计算详细统计数据
-            success_rate = success_count / total_words
-            avg_attempts = total_attempts / success_count if success_count > 0 else 6.0
-            elapsed_time = time.time() - start_time
-            
-            # 收集每轮实验的详细结果
-            trial_result = {
-                'solver': solver_class.__name__,
-                'trial': trial + 1,
-                'success_rate': success_rate,
-                'avg_attempts': avg_attempts,
-                'time': elapsed_time,
-                'seed': seed,
-                # 详细的尝试次数分布
-                'attempts_distribution': dict(attempts_dist),
-                # 计算分位数统计
-                'attempts_percentiles': {
-                    '50th': np.percentile([k for k, v in attempts_dist.items() 
-                                         if k != 'failed' for _ in range(v)], 50),
-                    '75th': np.percentile([k for k, v in attempts_dist.items() 
-                                         if k != 'failed' for _ in range(v)], 75),
-                    '90th': np.percentile([k for k, v in attempts_dist.items() 
-                                         if k != 'failed' for _ in range(v)], 90)
-                }
-            }
-            class_results.append(trial_result)
-            
-            # 打印单次实验的详细结果
-            print(f"Trial Results:")
-            print(f"Success Rate: {success_rate:.6f}")  # 显示6位小数
-            print(f"Average Attempts: {avg_attempts:.4f}")
-            print(f"Time: {elapsed_time:.4f}s")
-            print("Attempts Distribution:", dict(attempts_dist))
-            
-        results.extend(class_results)
+            success = solver.solve()
+            end_time = time.time()
+            results.append({
+                "solver": solver_class.__name__,
+                "success": success,
+                "attempts": len(solver.previous_guesses) if success else 6,
+                "time": end_time - start_time,
+                "seed": seed  # Record the seed for debugging
+            })
     
-    # 转换为DataFrame并计算聚合统计
     df = pd.DataFrame(results)
-    agg_results = df.groupby('solver').agg({
-        'success_rate': ['mean', 'std', 'min', 'max'],
-        'avg_attempts': ['mean', 'std'],
-        'time': 'mean',
-        'seed': 'mean'
-    })
-    
-    # 重命名列以提高可读性
-    agg_results.columns = [
-        'success_mean', 'success_std', 'success_min', 'success_max',
-        'attempts_mean', 'attempts_std', 'time', 'seed'
-    ]
-    
-    # 打印详细的聚合结果
-    print("\nDetailed Aggregate Results:")
-    pd.set_option('display.float_format', '{:.6f}'.format)  # 设置6位小数显示
-    print(agg_results)
-    
-    # 打印额外的统计信息
-    print("\nDetailed Statistics by Solver:")
-    for solver_name in df['solver'].unique():
-        solver_data = df[df['solver'] == solver_name]
-        print(f"\n{solver_name}:")
-        print(f"Success Rate Statistics:")
-        print(f"  Mean ± Std: {solver_data['success_rate'].mean():.6f} ± {solver_data['success_rate'].std():.6f}")
-        print(f"  Range: [{solver_data['success_rate'].min():.6f}, {solver_data['success_rate'].max():.6f}]")
-        print(f"Average Attempts Statistics:")
-        print(f"  Mean ± Std: {solver_data['avg_attempts'].mean():.4f} ± {solver_data['avg_attempts'].std():.4f}")
-    
-    return agg_results
+    # 设置显示格式：success列显示6位小数，其他保持原样
+    pd.set_option('display.float_format', lambda x: f'{x:.6f}' if 'success' in str(x) else f'{x:.4f}')
+    return df
 
 def plot_results(results, metrics=["attempts", "time"]):
     for metric in metrics:
