@@ -1,0 +1,1699 @@
+Epoch 40, Avg Loss: 7.7888
+Epoch 41, Avg Loss: 7.7106
+Epoch 42, Avg Loss: 7.6677
+Epoch 43, Avg Loss: 7.5807
+Epoch 44, Avg Loss: 7.4879
+Epoch 45, Avg Loss: 7.4008
+Epoch 46, Avg Loss: 7.3435
+Epoch 47, Avg Loss: 7.2543
+Epoch 48, Avg Loss: 7.2065
+Epoch 49, Avg Loss: 7.1011
+Epoch 50, Avg Loss: 7.0524
+Epoch 51, Avg Loss: 6.9767
+Epoch 52, Avg Loss: 6.9142
+Epoch 53, Avg Loss: 6.8406
+Epoch 54, Avg Loss: 6.7973
+Epoch 55, Avg Loss: 6.7253
+Epoch 56, Avg Loss: 6.6541
+Epoch 57, Avg Loss: 6.5759
+Epoch 58, Avg Loss: 6.5591
+Epoch 59, Avg Loss: 6.4632
+Epoch 60, Avg Loss: 6.3848
+Epoch 61, Avg Loss: 6.3635
+Epoch 62, Avg Loss: 6.3273
+Epoch 63, Avg Loss: 6.2255
+Epoch 64, Avg Loss: 6.2316
+Epoch 65, Avg Loss: 6.1558
+Epoch 66, Avg Loss: 6.1359
+Epoch 67, Avg Loss: 6.0715
+Epoch 68, Avg Loss: 6.0246
+Epoch 69, Avg Loss: 6.0008
+Epoch 70, Avg Loss: 5.9651
+Epoch 71, Avg Loss: 5.9164
+Epoch 72, Avg Loss: 5.8828
+Epoch 73, Avg Loss: 5.8987
+Epoch 74, Avg Loss: 5.8308
+Epoch 75, Avg Loss: 5.7962
+Epoch 76, Avg Loss: 5.7630
+Epoch 77, Avg Loss: 5.7534
+Epoch 78, Avg Loss: 5.7233
+Epoch 79, Avg Loss: 5.6951
+Epoch 80, Avg Loss: 5.6665
+Epoch 81, Avg Loss: 5.6744
+Epoch 82, Avg Loss: 5.6213
+Epoch 83, Avg Loss: 5.6246
+Epoch 84, Avg Loss: 5.5864
+Epoch 85, Avg Loss: 5.5836
+Epoch 86, Avg Loss: 5.5577
+Epoch 87, Avg Loss: 5.5637
+Epoch 88, Avg Loss: 5.5484
+Epoch 89, Avg Loss: 5.5387
+Epoch 90, Avg Loss: 5.5338
+Epoch 91, Avg Loss: 5.5177
+Epoch 92, Avg Loss: 5.5207
+Epoch 93, Avg Loss: 5.4950
+Epoch 94, Avg Loss: 5.5124
+Epoch 95, Avg Loss: 5.4963
+Epoch 96, Avg Loss: 5.5256
+Epoch 97, Avg Loss: 5.4786
+Epoch 98, Avg Loss: 5.5291
+Epoch 99, Avg Loss: 5.5332
+Epoch 100, Avg Loss: 5.5469
+
+Starting game with seed: 683207
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: youff
+Generated guess: youff
+Submitting guess: youff
+API response: [{'slot': 0, 'guess': 'y', 'result': 'absent'}, {'slot': 1, 'guess': 'o', 'result': 'absent'}, {'slot': 2, 'guess': 'u', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'f', 'result': 'absent'}, {'slot': 4, 'guess': 'f', 'result': 'absent'}]
+
+Attempt 2:
+Found 6599 valid words.
+Best RDL guess: khasi
+Generated guess: khasi
+Submitting guess: khasi
+API response: [{'slot': 0, 'guess': 'k', 'result': 'absent'}, {'slot': 1, 'guess': 'h', 'result': 'absent'}, {'slot': 2, 'guess': 'a', 'result': 'absent'}, {'slot': 3, 'guess'
+: 's', 'result': 'absent'}, {'slot': 4, 'guess': 'i', 'result': 'absent'}]
+
+Attempt 3:
+Found 323 valid words.
+Best RDL guess: renew
+Generated guess: renew
+Submitting guess: renew
+API response: [{'slot': 0, 'guess': 'r', 'result': 'absent'}, {'slot': 1, 'guess': 'e', 'result': 'present'}, {'slot': 2, 'guess': 'n', 'result': 'absent'}, {'slot': 3, 'guess
+': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'w', 'result': 'absent'}]
+
+Attempt 4:
+Found 15 valid words.
+Best RDL guess: ebbed
+Generated guess: ebbed
+Submitting guess: ebbed
+API response: [{'slot': 0, 'guess': 'e', 'result': 'present'}, {'slot': 1, 'guess': 'b', 'result': 'absent'}, {'slot': 2, 'guess': 'b', 'result': 'absent'}, {'slot': 3, 'guess
+': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'd', 'result': 'absent'}]
+
+Attempt 5:
+Found 1 valid words.
+Best RDL guess: gleet
+Generated guess: gleet
+Submitting guess: gleet
+API response: [{'slot': 0, 'guess': 'g', 'result': 'present'}, {'slot': 1, 'guess': 'l', 'result': 'absent'}, {'slot': 2, 'guess': 'e', 'result': 'present'}, {'slot': 3, 'gues
+s': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 't', 'result': 'absent'}]
+
+Attempt 6:
+Found 0 valid words.
+No valid words left to guess.
+
+Starting trial 3 of 10...
+Using seed: 637213
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 637213
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'guess'
+: 's', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'present'}]
+
+Attempt 2:
+Found 813 valid words.
+Best heuristic guess: inlet
+Generated guess: inlet
+Submitting guess: inlet
+API response: [{'slot': 0, 'guess': 'i', 'result': 'absent'}, {'slot': 1, 'guess': 'n', 'result': 'absent'}, {'slot': 2, 'guess': 'l', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'e', 'result': 'present'}, {'slot': 4, 'guess': 't', 'result': 'present'}]
+
+Attempt 3:
+Found 33 valid words.
+Best heuristic guess: techy
+Generated guess: techy
+Submitting guess: techy
+API response: [{'slot': 0, 'guess': 't', 'result': 'present'}, {'slot': 1, 'guess': 'e', 'result': 'correct'}, {'slot': 2, 'guess': 'c', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'h', 'result': 'present'}, {'slot': 4, 'guess': 'y', 'result': 'correct'}]
+
+Attempt 4:
+Found 2 valid words.
+Best heuristic guess: hefty
+Generated guess: hefty
+Submitting guess: hefty
+API response: [{'slot': 0, 'guess': 'h', 'result': 'correct'}, {'slot': 1, 'guess': 'e', 'result': 'correct'}, {'slot': 2, 'guess': 'f', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 't', 'result': 'correct'}, {'slot': 4, 'guess': 'y', 'result': 'correct'}]
+Success! The word is 'hefty'. Found in 4 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6763
+Epoch 2, Avg Loss: 9.6717
+Epoch 3, Avg Loss: 9.6632
+Epoch 4, Avg Loss: 9.6540
+Epoch 5, Avg Loss: 9.6407
+Epoch 6, Avg Loss: 9.6145
+Epoch 7, Avg Loss: 9.5645
+Epoch 8, Avg Loss: 9.4731
+Epoch 9, Avg Loss: 9.3122
+Epoch 10, Avg Loss: 9.0808
+Epoch 11, Avg Loss: 8.8360
+Epoch 12, Avg Loss: 8.7536
+Epoch 13, Avg Loss: 8.7408
+Epoch 14, Avg Loss: 8.7084
+Epoch 15, Avg Loss: 8.6603
+Epoch 16, Avg Loss: 8.6284
+Epoch 17, Avg Loss: 8.6233
+Epoch 18, Avg Loss: 8.6006
+Epoch 19, Avg Loss: 8.5930
+Epoch 20, Avg Loss: 8.5806
+Epoch 21, Avg Loss: 8.5745
+Epoch 22, Avg Loss: 8.5561
+Epoch 23, Avg Loss: 8.5421
+Epoch 24, Avg Loss: 8.5395
+Epoch 25, Avg Loss: 8.5129
+Epoch 26, Avg Loss: 8.4995
+Epoch 27, Avg Loss: 8.4760
+Epoch 28, Avg Loss: 8.4522
+Epoch 29, Avg Loss: 8.4113
+Epoch 30, Avg Loss: 8.3758
+Epoch 31, Avg Loss: 8.3364
+Epoch 32, Avg Loss: 8.2733
+Epoch 33, Avg Loss: 8.2417
+Epoch 34, Avg Loss: 8.1658
+Epoch 35, Avg Loss: 8.1305
+Epoch 36, Avg Loss: 8.0853
+Epoch 37, Avg Loss: 7.9864
+Epoch 38, Avg Loss: 7.9432
+Epoch 39, Avg Loss: 7.8497
+Epoch 40, Avg Loss: 7.7754
+Epoch 41, Avg Loss: 7.6945
+Epoch 42, Avg Loss: 7.6502
+Epoch 43, Avg Loss: 7.5477
+Epoch 44, Avg Loss: 7.4680
+Epoch 45, Avg Loss: 7.3991
+Epoch 46, Avg Loss: 7.3656
+Epoch 47, Avg Loss: 7.2471
+Epoch 48, Avg Loss: 7.1918
+Epoch 49, Avg Loss: 7.0653
+Epoch 50, Avg Loss: 7.0403
+Epoch 51, Avg Loss: 6.9653
+Epoch 52, Avg Loss: 6.8752
+Epoch 53, Avg Loss: 6.8445
+Epoch 54, Avg Loss: 6.7442
+Epoch 55, Avg Loss: 6.6934
+Epoch 56, Avg Loss: 6.6242
+Epoch 57, Avg Loss: 6.5573
+Epoch 58, Avg Loss: 6.5292
+Epoch 59, Avg Loss: 6.4521
+Epoch 60, Avg Loss: 6.3993
+Epoch 61, Avg Loss: 6.3340
+Epoch 62, Avg Loss: 6.2914
+Epoch 63, Avg Loss: 6.2281
+Epoch 64, Avg Loss: 6.2121
+Epoch 65, Avg Loss: 6.1496
+Epoch 66, Avg Loss: 6.1655
+Epoch 67, Avg Loss: 6.0914
+Epoch 68, Avg Loss: 6.0382
+Epoch 69, Avg Loss: 5.9954
+Epoch 70, Avg Loss: 5.9692
+Epoch 71, Avg Loss: 5.9477
+Epoch 72, Avg Loss: 5.8990
+Epoch 73, Avg Loss: 5.8312
+Epoch 74, Avg Loss: 5.8497
+Epoch 75, Avg Loss: 5.8424
+Epoch 76, Avg Loss: 5.8095
+Epoch 77, Avg Loss: 5.7602
+Epoch 78, Avg Loss: 5.7691
+Epoch 79, Avg Loss: 5.7395
+Epoch 80, Avg Loss: 5.6788
+Epoch 81, Avg Loss: 5.7082
+Epoch 82, Avg Loss: 5.6603
+Epoch 83, Avg Loss: 5.6050
+Epoch 84, Avg Loss: 5.6257
+Epoch 85, Avg Loss: 5.6134
+Epoch 86, Avg Loss: 5.6045
+Epoch 87, Avg Loss: 5.5749
+Epoch 88, Avg Loss: 5.5512
+Epoch 89, Avg Loss: 5.5540
+Epoch 90, Avg Loss: 5.5492
+Epoch 91, Avg Loss: 5.5611
+Epoch 92, Avg Loss: 5.5131
+Epoch 93, Avg Loss: 5.5274
+Epoch 94, Avg Loss: 5.5125
+Epoch 95, Avg Loss: 5.5438
+Epoch 96, Avg Loss: 5.5203
+Epoch 97, Avg Loss: 5.5452
+Epoch 98, Avg Loss: 5.5383
+Epoch 99, Avg Loss: 5.5271
+Epoch 100, Avg Loss: 5.5132
+
+Starting game with seed: 637213
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: ouija
+Generated guess: ouija
+Submitting guess: ouija
+API response: [{'slot': 0, 'guess': 'o', 'result': 'absent'}, {'slot': 1, 'guess': 'u', 'result': 'absent'}, {'slot': 2, 'guess': 'i', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'j', 'result': 'absent'}, {'slot': 4, 'guess': 'a', 'result': 'absent'}]
+
+Attempt 2:
+Found 1461 valid words.
+Best RDL guess: lethy
+Generated guess: lethy
+Submitting guess: lethy
+API response: [{'slot': 0, 'guess': 'l', 'result': 'absent'}, {'slot': 1, 'guess': 'e', 'result': 'correct'}, {'slot': 2, 'guess': 't', 'result': 'present'}, {'slot': 3, 'gues
+s': 'h', 'result': 'present'}, {'slot': 4, 'guess': 'y', 'result': 'correct'}]
+
+Attempt 3:
+Found 1 valid words.
+Best RDL guess: hefty
+Generated guess: hefty
+Submitting guess: hefty
+API response: [{'slot': 0, 'guess': 'h', 'result': 'correct'}, {'slot': 1, 'guess': 'e', 'result': 'correct'}, {'slot': 2, 'guess': 'f', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 't', 'result': 'correct'}, {'slot': 4, 'guess': 'y', 'result': 'correct'}]
+Success! The word is 'hefty'. Found in 3 attempts.
+
+Starting trial 4 of 10...
+Using seed: 449073
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 449073
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'guess'
+: 's', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'present'}]
+
+Attempt 2:
+Found 813 valid words.
+Best heuristic guess: inlet
+Generated guess: inlet
+Submitting guess: inlet
+API response: [{'slot': 0, 'guess': 'i', 'result': 'present'}, {'slot': 1, 'guess': 'n', 'result': 'present'}, {'slot': 2, 'guess': 'l', 'result': 'present'}, {'slot': 3, 'gue
+ss': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 't', 'result': 'absent'}]
+
+Attempt 3:
+Found 9 valid words.
+Best heuristic guess: cinel
+Generated guess: cinel
+Submitting guess: cinel
+API response: [{'slot': 0, 'guess': 'c', 'result': 'absent'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'n', 'result': 'present'}, {'slot': 3, 'gues
+s': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'present'}]
+
+Attempt 4:
+Found 4 valid words.
+Best heuristic guess: lifen
+Generated guess: lifen
+Submitting guess: lifen
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'f', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+
+Attempt 5:
+Found 3 valid words.
+Best heuristic guess: liken
+Generated guess: liken
+Submitting guess: liken
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'k', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+Success! The word is 'liken'. Found in 5 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6754
+Epoch 2, Avg Loss: 9.6722
+Epoch 3, Avg Loss: 9.6639
+Epoch 4, Avg Loss: 9.6559
+Epoch 5, Avg Loss: 9.6400
+Epoch 6, Avg Loss: 9.6160
+Epoch 7, Avg Loss: 9.5724
+Epoch 8, Avg Loss: 9.4782
+Epoch 9, Avg Loss: 9.3240
+Epoch 10, Avg Loss: 9.0884
+Epoch 11, Avg Loss: 8.8486
+Epoch 12, Avg Loss: 8.7374
+Epoch 13, Avg Loss: 8.7454
+Epoch 14, Avg Loss: 8.7233
+Epoch 15, Avg Loss: 8.6697
+Epoch 16, Avg Loss: 8.6451
+Epoch 17, Avg Loss: 8.6256
+Epoch 18, Avg Loss: 8.6097
+Epoch 19, Avg Loss: 8.5926
+Epoch 20, Avg Loss: 8.5803
+Epoch 21, Avg Loss: 8.5638
+Epoch 22, Avg Loss: 8.5574
+Epoch 23, Avg Loss: 8.5491
+Epoch 24, Avg Loss: 8.5331
+Epoch 25, Avg Loss: 8.5190
+Epoch 26, Avg Loss: 8.5020
+Epoch 27, Avg Loss: 8.4647
+Epoch 28, Avg Loss: 8.4447
+Epoch 29, Avg Loss: 8.4086
+Epoch 30, Avg Loss: 8.3766
+Epoch 31, Avg Loss: 8.3245
+Epoch 32, Avg Loss: 8.2819
+Epoch 33, Avg Loss: 8.2380
+Epoch 34, Avg Loss: 8.1868
+Epoch 35, Avg Loss: 8.1267
+Epoch 36, Avg Loss: 8.0445
+Epoch 37, Avg Loss: 8.0034
+Epoch 38, Avg Loss: 7.9283
+Epoch 39, Avg Loss: 7.8478
+Epoch 40, Avg Loss: 7.8028
+Epoch 41, Avg Loss: 7.6979
+Epoch 42, Avg Loss: 7.6238
+Epoch 43, Avg Loss: 7.5722
+Epoch 44, Avg Loss: 7.4670
+Epoch 45, Avg Loss: 7.3929
+Epoch 46, Avg Loss: 7.3357
+Epoch 47, Avg Loss: 7.2551
+Epoch 48, Avg Loss: 7.1896
+Epoch 49, Avg Loss: 7.1010
+Epoch 50, Avg Loss: 7.0144
+Epoch 51, Avg Loss: 6.9818
+Epoch 52, Avg Loss: 6.9117
+Epoch 53, Avg Loss: 6.8075
+Epoch 54, Avg Loss: 6.7682
+Epoch 55, Avg Loss: 6.6817
+Epoch 56, Avg Loss: 6.6224
+Epoch 57, Avg Loss: 6.6020
+Epoch 58, Avg Loss: 6.5390
+Epoch 59, Avg Loss: 6.4686
+Epoch 60, Avg Loss: 6.4298
+Epoch 61, Avg Loss: 6.3491
+Epoch 62, Avg Loss: 6.3507
+Epoch 63, Avg Loss: 6.2817
+Epoch 64, Avg Loss: 6.2226
+Epoch 65, Avg Loss: 6.2091
+Epoch 66, Avg Loss: 6.1765
+Epoch 67, Avg Loss: 6.1081
+Epoch 68, Avg Loss: 6.0630
+Epoch 69, Avg Loss: 6.0174
+Epoch 70, Avg Loss: 6.0007
+Epoch 71, Avg Loss: 5.9766
+Epoch 72, Avg Loss: 5.9476
+Epoch 73, Avg Loss: 5.9303
+Epoch 74, Avg Loss: 5.8359
+Epoch 75, Avg Loss: 5.8648
+Epoch 76, Avg Loss: 5.8690
+Epoch 77, Avg Loss: 5.8067
+Epoch 78, Avg Loss: 5.7692
+Epoch 79, Avg Loss: 5.7615
+Epoch 80, Avg Loss: 5.7178
+Epoch 81, Avg Loss: 5.7135
+Epoch 82, Avg Loss: 5.7381
+Epoch 83, Avg Loss: 5.7342
+Epoch 84, Avg Loss: 5.6657
+Epoch 85, Avg Loss: 5.6702
+Epoch 86, Avg Loss: 5.6531
+Epoch 87, Avg Loss: 5.6697
+Epoch 88, Avg Loss: 5.6223
+Epoch 89, Avg Loss: 5.6057
+Epoch 90, Avg Loss: 5.5950
+Epoch 91, Avg Loss: 5.5893
+Epoch 92, Avg Loss: 5.5946
+Epoch 93, Avg Loss: 5.5483
+Epoch 94, Avg Loss: 5.5707
+Epoch 95, Avg Loss: 5.5703
+Epoch 96, Avg Loss: 5.5845
+Epoch 97, Avg Loss: 5.5746
+Epoch 98, Avg Loss: 5.5612
+Epoch 99, Avg Loss: 5.5601
+Epoch 100, Avg Loss: 5.5818
+
+Starting game with seed: 449073
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: mizzy
+Generated guess: mizzy
+Submitting guess: mizzy
+API response: [{'slot': 0, 'guess': 'm', 'result': 'absent'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'z', 'result': 'absent'}, {'slot': 3, 'guess
+': 'z', 'result': 'absent'}, {'slot': 4, 'guess': 'y', 'result': 'absent'}]
+
+Attempt 2:
+Found 1165 valid words.
+Best RDL guess: vivid
+Generated guess: vivid
+Submitting guess: vivid
+API response: [{'slot': 0, 'guess': 'v', 'result': 'absent'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'v', 'result': 'absent'}, {'slot': 3, 'guess
+': 'i', 'result': 'present'}, {'slot': 4, 'guess': 'd', 'result': 'absent'}]
+
+Attempt 3:
+Found 742 valid words.
+Best RDL guess: lithi
+Generated guess: lithi
+Submitting guess: lithi
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 't', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'h', 'result': 'absent'}, {'slot': 4, 'guess': 'i', 'result': 'present'}]
+
+Attempt 4:
+Found 52 valid words.
+Best RDL guess: libel
+Generated guess: libel
+Submitting guess: libel
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'present'}]
+
+Attempt 5:
+Found 11 valid words.
+Best RDL guess: liles
+Generated guess: liles
+Submitting guess: liles
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'l', 'result': 'present'}, {'slot': 3, 'gue
+ss': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 's', 'result': 'absent'}]
+
+Attempt 6:
+Found 8 valid words.
+Best RDL guess: lifen
+Generated guess: lifen
+Submitting guess: lifen
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'f', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+Failed to find the word in 6 attempts.
+
+Starting trial 5 of 10...
+Using seed: 658351
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 658351
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'present'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'guess
+': 's', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'absent'}]
+
+Attempt 2:
+Found 99 valid words.
+Best heuristic guess: hilsa
+Generated guess: hilsa
+Submitting guess: hilsa
+API response: [{'slot': 0, 'guess': 'h', 'result': 'absent'}, {'slot': 1, 'guess': 'i', 'result': 'absent'}, {'slot': 2, 'guess': 'l', 'result': 'absent'}, {'slot': 3, 'guess'
+: 's', 'result': 'correct'}, {'slot': 4, 'guess': 'a', 'result': 'present'}]
+
+Attempt 3:
+Found 28 valid words.
+Best heuristic guess: tansy
+Generated guess: tansy
+Submitting guess: tansy
+API response: [{'slot': 0, 'guess': 't', 'result': 'present'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'n', 'result': 'absent'}, {'slot': 3, 'gues
+s': 's', 'result': 'correct'}, {'slot': 4, 'guess': 'y', 'result': 'absent'}]
+
+Attempt 4:
+Found 3 valid words.
+Best heuristic guess: faust
+Generated guess: faust
+Submitting guess: faust
+API response: [{'slot': 0, 'guess': 'f', 'result': 'correct'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'u', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 's', 'result': 'correct'}, {'slot': 4, 'guess': 't', 'result': 'correct'}]
+Success! The word is 'faust'. Found in 4 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6764
+Epoch 2, Avg Loss: 9.6714
+Epoch 3, Avg Loss: 9.6650
+Epoch 4, Avg Loss: 9.6539
+Epoch 5, Avg Loss: 9.6388
+Epoch 6, Avg Loss: 9.6126
+Epoch 7, Avg Loss: 9.5672
+Epoch 8, Avg Loss: 9.4735
+Epoch 9, Avg Loss: 9.3171
+Epoch 10, Avg Loss: 9.0733
+Epoch 11, Avg Loss: 8.8345
+Epoch 12, Avg Loss: 8.7404
+Epoch 13, Avg Loss: 8.7278
+Epoch 14, Avg Loss: 8.7179
+Epoch 15, Avg Loss: 8.6716
+Epoch 16, Avg Loss: 8.6226
+Epoch 17, Avg Loss: 8.6207
+Epoch 18, Avg Loss: 8.6107
+Epoch 19, Avg Loss: 8.6057
+Epoch 20, Avg Loss: 8.5802
+Epoch 21, Avg Loss: 8.5676
+Epoch 22, Avg Loss: 8.5617
+Epoch 23, Avg Loss: 8.5514
+Epoch 24, Avg Loss: 8.5352
+Epoch 25, Avg Loss: 8.5169
+Epoch 26, Avg Loss: 8.4976
+Epoch 27, Avg Loss: 8.4780
+Epoch 28, Avg Loss: 8.4464
+Epoch 29, Avg Loss: 8.4069
+Epoch 30, Avg Loss: 8.3723
+Epoch 31, Avg Loss: 8.3307
+Epoch 32, Avg Loss: 8.2926
+Epoch 33, Avg Loss: 8.2407
+Epoch 34, Avg Loss: 8.1832
+Epoch 35, Avg Loss: 8.1196
+Epoch 36, Avg Loss: 8.0779
+Epoch 37, Avg Loss: 8.0301
+Epoch 38, Avg Loss: 7.9264
+Epoch 39, Avg Loss: 7.8799
+Epoch 40, Avg Loss: 7.8057
+Epoch 41, Avg Loss: 7.7300
+Epoch 42, Avg Loss: 7.6448
+Epoch 43, Avg Loss: 7.5760
+Epoch 44, Avg Loss: 7.4993
+Epoch 45, Avg Loss: 7.4082
+Epoch 46, Avg Loss: 7.3408
+Epoch 47, Avg Loss: 7.2487
+Epoch 48, Avg Loss: 7.2251
+Epoch 49, Avg Loss: 7.1703
+Epoch 50, Avg Loss: 7.0587
+Epoch 51, Avg Loss: 7.0035
+Epoch 52, Avg Loss: 6.9434
+Epoch 53, Avg Loss: 6.8285
+Epoch 54, Avg Loss: 6.7629
+Epoch 55, Avg Loss: 6.7106
+Epoch 56, Avg Loss: 6.6764
+Epoch 57, Avg Loss: 6.6206
+Epoch 58, Avg Loss: 6.5576
+Epoch 59, Avg Loss: 6.4690
+Epoch 60, Avg Loss: 6.4359
+Epoch 61, Avg Loss: 6.3746
+Epoch 62, Avg Loss: 6.3363
+Epoch 63, Avg Loss: 6.2661
+Epoch 64, Avg Loss: 6.2133
+Epoch 65, Avg Loss: 6.1842
+Epoch 66, Avg Loss: 6.1330
+Epoch 67, Avg Loss: 6.0939
+Epoch 68, Avg Loss: 6.0538
+Epoch 69, Avg Loss: 6.0265
+Epoch 70, Avg Loss: 6.0020
+Epoch 71, Avg Loss: 5.9427
+Epoch 72, Avg Loss: 5.9067
+Epoch 73, Avg Loss: 5.8769
+Epoch 74, Avg Loss: 5.8309
+Epoch 75, Avg Loss: 5.8376
+Epoch 76, Avg Loss: 5.7831
+Epoch 77, Avg Loss: 5.7601
+Epoch 78, Avg Loss: 5.7504
+Epoch 79, Avg Loss: 5.7240
+Epoch 80, Avg Loss: 5.6763
+Epoch 81, Avg Loss: 5.6508
+Epoch 82, Avg Loss: 5.6565
+Epoch 83, Avg Loss: 5.6680
+Epoch 84, Avg Loss: 5.6253
+Epoch 85, Avg Loss: 5.5679
+Epoch 86, Avg Loss: 5.5549
+Epoch 87, Avg Loss: 5.5800
+Epoch 88, Avg Loss: 5.5703
+Epoch 89, Avg Loss: 5.5368
+Epoch 90, Avg Loss: 5.5191
+Epoch 91, Avg Loss: 5.5351
+Epoch 92, Avg Loss: 5.5157
+Epoch 93, Avg Loss: 5.5231
+Epoch 94, Avg Loss: 5.5523
+Epoch 95, Avg Loss: 5.5210
+Epoch 96, Avg Loss: 5.5261
+Epoch 97, Avg Loss: 5.5013
+Epoch 98, Avg Loss: 5.5339
+Epoch 99, Avg Loss: 5.5168
+Epoch 100, Avg Loss: 5.5142
+
+Starting game with seed: 658351
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: kokum
+Generated guess: kokum
+Submitting guess: kokum
+API response: [{'slot': 0, 'guess': 'k', 'result': 'absent'}, {'slot': 1, 'guess': 'o', 'result': 'absent'}, {'slot': 2, 'guess': 'k', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'u', 'result': 'present'}, {'slot': 4, 'guess': 'm', 'result': 'absent'}]
+
+Attempt 2:
+Found 1613 valid words.
+Best RDL guess: bundu
+Generated guess: bundu
+Submitting guess: bundu
+API response: [{'slot': 0, 'guess': 'b', 'result': 'absent'}, {'slot': 1, 'guess': 'u', 'result': 'present'}, {'slot': 2, 'guess': 'n', 'result': 'absent'}, {'slot': 3, 'guess
+': 'd', 'result': 'absent'}, {'slot': 4, 'guess': 'u', 'result': 'present'}]
+
+Attempt 3:
+Found 306 valid words.
+Best RDL guess: haute
+Generated guess: haute
+Submitting guess: haute
+API response: [{'slot': 0, 'guess': 'h', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'u', 'result': 'correct'}, {'slot': 3, 'gues
+s': 't', 'result': 'present'}, {'slot': 4, 'guess': 'e', 'result': 'absent'}]
+
+Attempt 4:
+Found 8 valid words.
+Best RDL guess: faust
+Generated guess: faust
+Submitting guess: faust
+API response: [{'slot': 0, 'guess': 'f', 'result': 'correct'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'u', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 's', 'result': 'correct'}, {'slot': 4, 'guess': 't', 'result': 'correct'}]
+Success! The word is 'faust'. Found in 4 attempts.
+
+Starting trial 6 of 10...
+Using seed: 512664
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 512664
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 's', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'absent'}]
+
+Attempt 2:
+Found 105 valid words.
+Best heuristic guess: tronc
+Generated guess: tronc
+Submitting guess: tronc
+API response: [{'slot': 0, 'guess': 't', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'n', 'result': 'present'}, {'slot': 4, 'guess': 'c', 'result': 'absent'}]
+
+Attempt 3:
+Found 7 valid words.
+Best heuristic guess: brown
+Generated guess: brown
+Submitting guess: brown
+API response: [{'slot': 0, 'guess': 'b', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+
+Attempt 4:
+Found 3 valid words.
+Best heuristic guess: drown
+Generated guess: drown
+Submitting guess: drown
+API response: [{'slot': 0, 'guess': 'd', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+
+Attempt 5:
+Found 2 valid words.
+Best heuristic guess: frown
+Generated guess: frown
+Submitting guess: frown
+API response: [{'slot': 0, 'guess': 'f', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+
+Attempt 6:
+Found 1 valid words.
+Best heuristic guess: grown
+Generated guess: grown
+Submitting guess: grown
+API response: [{'slot': 0, 'guess': 'g', 'result': 'correct'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+Success! The word is 'grown'. Found in 6 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6763
+Epoch 2, Avg Loss: 9.6721
+Epoch 3, Avg Loss: 9.6653
+Epoch 4, Avg Loss: 9.6553
+Epoch 5, Avg Loss: 9.6415
+Epoch 6, Avg Loss: 9.6124
+Epoch 7, Avg Loss: 9.5676
+Epoch 8, Avg Loss: 9.4762
+Epoch 9, Avg Loss: 9.3089
+Epoch 10, Avg Loss: 9.0666
+Epoch 11, Avg Loss: 8.8439
+Epoch 12, Avg Loss: 8.7678
+Epoch 13, Avg Loss: 8.7500
+Epoch 14, Avg Loss: 8.7056
+Epoch 15, Avg Loss: 8.6608
+Epoch 16, Avg Loss: 8.6242
+Epoch 17, Avg Loss: 8.6198
+Epoch 18, Avg Loss: 8.6138
+Epoch 19, Avg Loss: 8.5922
+Epoch 20, Avg Loss: 8.5851
+Epoch 21, Avg Loss: 8.5770
+Epoch 22, Avg Loss: 8.5666
+Epoch 23, Avg Loss: 8.5502
+Epoch 24, Avg Loss: 8.5317
+Epoch 25, Avg Loss: 8.5126
+Epoch 26, Avg Loss: 8.4895
+Epoch 27, Avg Loss: 8.4655
+Epoch 28, Avg Loss: 8.4441
+Epoch 29, Avg Loss: 8.3985
+Epoch 30, Avg Loss: 8.3714
+Epoch 31, Avg Loss: 8.3294
+Epoch 32, Avg Loss: 8.3022
+Epoch 33, Avg Loss: 8.2216
+Epoch 34, Avg Loss: 8.1732
+Epoch 35, Avg Loss: 8.1322
+Epoch 36, Avg Loss: 8.0774
+Epoch 37, Avg Loss: 8.0226
+Epoch 38, Avg Loss: 7.9523
+Epoch 39, Avg Loss: 7.8806
+Epoch 40, Avg Loss: 7.7756
+Epoch 41, Avg Loss: 7.7229
+Epoch 42, Avg Loss: 7.6475
+Epoch 43, Avg Loss: 7.5589
+Epoch 44, Avg Loss: 7.5039
+Epoch 45, Avg Loss: 7.3946
+Epoch 46, Avg Loss: 7.3312
+Epoch 47, Avg Loss: 7.2615
+Epoch 48, Avg Loss: 7.1766
+Epoch 49, Avg Loss: 7.0851
+Epoch 50, Avg Loss: 7.0225
+Epoch 51, Avg Loss: 6.9721
+Epoch 52, Avg Loss: 6.8764
+Epoch 53, Avg Loss: 6.8614
+Epoch 54, Avg Loss: 6.7953
+Epoch 55, Avg Loss: 6.7085
+Epoch 56, Avg Loss: 6.6629
+Epoch 57, Avg Loss: 6.6233
+Epoch 58, Avg Loss: 6.5333
+Epoch 59, Avg Loss: 6.4563
+Epoch 60, Avg Loss: 6.4385
+Epoch 61, Avg Loss: 6.3505
+Epoch 62, Avg Loss: 6.3138
+Epoch 63, Avg Loss: 6.2314
+Epoch 64, Avg Loss: 6.2588
+Epoch 65, Avg Loss: 6.1899
+Epoch 66, Avg Loss: 6.1279
+Epoch 67, Avg Loss: 6.1330
+Epoch 68, Avg Loss: 6.0688
+Epoch 69, Avg Loss: 6.0281
+Epoch 70, Avg Loss: 6.0110
+Epoch 71, Avg Loss: 6.0068
+Epoch 72, Avg Loss: 5.9499
+Epoch 73, Avg Loss: 5.8638
+Epoch 74, Avg Loss: 5.8796
+Epoch 75, Avg Loss: 5.8805
+Epoch 76, Avg Loss: 5.8604
+Epoch 77, Avg Loss: 5.7844
+Epoch 78, Avg Loss: 5.7630
+Epoch 79, Avg Loss: 5.7695
+Epoch 80, Avg Loss: 5.7536
+Epoch 81, Avg Loss: 5.7194
+Epoch 82, Avg Loss: 5.7264
+Epoch 83, Avg Loss: 5.7010
+Epoch 84, Avg Loss: 5.6643
+Epoch 85, Avg Loss: 5.6346
+Epoch 86, Avg Loss: 5.6722
+Epoch 87, Avg Loss: 5.6554
+Epoch 88, Avg Loss: 5.6305
+Epoch 89, Avg Loss: 5.5934
+Epoch 90, Avg Loss: 5.6069
+Epoch 91, Avg Loss: 5.6028
+Epoch 92, Avg Loss: 5.6025
+Epoch 93, Avg Loss: 5.5802
+Epoch 94, Avg Loss: 5.5873
+Epoch 95, Avg Loss: 5.5474
+Epoch 96, Avg Loss: 5.5633
+Epoch 97, Avg Loss: 5.5971
+Epoch 98, Avg Loss: 5.5594
+Epoch 99, Avg Loss: 5.5555
+Epoch 100, Avg Loss: 5.5735
+
+Starting game with seed: 512664
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: quawk
+Generated guess: quawk
+Submitting guess: quawk
+API response: [{'slot': 0, 'guess': 'q', 'result': 'absent'}, {'slot': 1, 'guess': 'u', 'result': 'absent'}, {'slot': 2, 'guess': 'a', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'k', 'result': 'absent'}]
+
+Attempt 2:
+Found 72 valid words.
+Best RDL guess: showy
+Generated guess: showy
+Submitting guess: showy
+API response: [{'slot': 0, 'guess': 's', 'result': 'absent'}, {'slot': 1, 'guess': 'h', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'guess
+': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'y', 'result': 'absent'}]
+
+Attempt 3:
+Found 16 valid words.
+Best RDL guess: drown
+Generated guess: drown
+Submitting guess: drown
+API response: [{'slot': 0, 'guess': 'd', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+
+Attempt 4:
+Found 4 valid words.
+Best RDL guess: crown
+Generated guess: crown
+Submitting guess: crown
+API response: [{'slot': 0, 'guess': 'c', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+
+Attempt 5:
+Found 3 valid words.
+Best RDL guess: grown
+Generated guess: grown
+Submitting guess: grown
+API response: [{'slot': 0, 'guess': 'g', 'result': 'correct'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'w', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'correct'}]
+Success! The word is 'grown'. Found in 5 attempts.
+
+Starting trial 7 of 10...
+Using seed: 443495
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 443495
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'guess'
+: 's', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 2:
+Found 361 valid words.
+Best heuristic guess: unlie
+Generated guess: unlie
+Submitting guess: unlie
+API response: [{'slot': 0, 'guess': 'u', 'result': 'absent'}, {'slot': 1, 'guess': 'n', 'result': 'absent'}, {'slot': 2, 'guess': 'l', 'result': 'present'}, {'slot': 3, 'guess
+': 'i', 'result': 'present'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 3:
+Found 31 valid words.
+Best heuristic guess: clite
+Generated guess: clite
+Submitting guess: clite
+API response: [{'slot': 0, 'guess': 'c', 'result': 'absent'}, {'slot': 1, 'guess': 'l', 'result': 'present'}, {'slot': 2, 'guess': 'i', 'result': 'present'}, {'slot': 3, 'gues
+s': 't', 'result': 'present'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 4:
+Found 5 valid words.
+Best heuristic guess: ixtle
+Generated guess: ixtle
+Submitting guess: ixtle
+API response: [{'slot': 0, 'guess': 'i', 'result': 'present'}, {'slot': 1, 'guess': 'x', 'result': 'absent'}, {'slot': 2, 'guess': 't', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'l', 'result': 'present'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 5:
+Found 1 valid words.
+Best heuristic guess: lithe
+Generated guess: lithe
+Submitting guess: lithe
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 't', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'h', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+Success! The word is 'lithe'. Found in 5 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6761
+Epoch 2, Avg Loss: 9.6715
+Epoch 3, Avg Loss: 9.6640
+Epoch 4, Avg Loss: 9.6545
+Epoch 5, Avg Loss: 9.6405
+Epoch 6, Avg Loss: 9.6132
+Epoch 7, Avg Loss: 9.5684
+Epoch 8, Avg Loss: 9.4753
+Epoch 9, Avg Loss: 9.3142
+Epoch 10, Avg Loss: 9.0693
+Epoch 11, Avg Loss: 8.8412
+Epoch 12, Avg Loss: 8.7675
+Epoch 13, Avg Loss: 8.7543
+Epoch 14, Avg Loss: 8.7232
+Epoch 15, Avg Loss: 8.6608
+Epoch 16, Avg Loss: 8.6308
+Epoch 17, Avg Loss: 8.6198
+Epoch 18, Avg Loss: 8.6093
+Epoch 19, Avg Loss: 8.6027
+Epoch 20, Avg Loss: 8.5933
+Epoch 21, Avg Loss: 8.5631
+Epoch 22, Avg Loss: 8.5651
+Epoch 23, Avg Loss: 8.5562
+Epoch 24, Avg Loss: 8.5319
+Epoch 25, Avg Loss: 8.5210
+Epoch 26, Avg Loss: 8.4959
+Epoch 27, Avg Loss: 8.4686
+Epoch 28, Avg Loss: 8.4500
+Epoch 29, Avg Loss: 8.4136
+Epoch 30, Avg Loss: 8.3822
+Epoch 31, Avg Loss: 8.3411
+Epoch 32, Avg Loss: 8.2882
+Epoch 33, Avg Loss: 8.2374
+Epoch 34, Avg Loss: 8.1862
+Epoch 35, Avg Loss: 8.1659
+Epoch 36, Avg Loss: 8.0854
+Epoch 37, Avg Loss: 7.9936
+Epoch 38, Avg Loss: 7.9392
+Epoch 39, Avg Loss: 7.8693
+Epoch 40, Avg Loss: 7.8170
+Epoch 41, Avg Loss: 7.7223
+Epoch 42, Avg Loss: 7.6347
+Epoch 43, Avg Loss: 7.5803
+Epoch 44, Avg Loss: 7.4752
+Epoch 45, Avg Loss: 7.4048
+Epoch 46, Avg Loss: 7.3437
+Epoch 47, Avg Loss: 7.2311
+Epoch 48, Avg Loss: 7.1728
+Epoch 49, Avg Loss: 7.1357
+Epoch 50, Avg Loss: 7.0331
+Epoch 51, Avg Loss: 6.9352
+Epoch 52, Avg Loss: 6.9010
+Epoch 53, Avg Loss: 6.8153
+Epoch 54, Avg Loss: 6.7843
+Epoch 55, Avg Loss: 6.7092
+Epoch 56, Avg Loss: 6.6464
+Epoch 57, Avg Loss: 6.5627
+Epoch 58, Avg Loss: 6.5112
+Epoch 59, Avg Loss: 6.4659
+Epoch 60, Avg Loss: 6.4283
+Epoch 61, Avg Loss: 6.3555
+Epoch 62, Avg Loss: 6.2954
+Epoch 63, Avg Loss: 6.2643
+Epoch 64, Avg Loss: 6.2169
+Epoch 65, Avg Loss: 6.1892
+Epoch 66, Avg Loss: 6.1250
+Epoch 67, Avg Loss: 6.1405
+Epoch 68, Avg Loss: 6.0583
+Epoch 69, Avg Loss: 6.0472
+Epoch 70, Avg Loss: 6.0188
+Epoch 71, Avg Loss: 5.9487
+Epoch 72, Avg Loss: 5.9626
+Epoch 73, Avg Loss: 5.9048
+Epoch 74, Avg Loss: 5.8415
+Epoch 75, Avg Loss: 5.8396
+Epoch 76, Avg Loss: 5.8194
+Epoch 77, Avg Loss: 5.7807
+Epoch 78, Avg Loss: 5.7785
+Epoch 79, Avg Loss: 5.7790
+Epoch 80, Avg Loss: 5.7290
+Epoch 81, Avg Loss: 5.6931
+Epoch 82, Avg Loss: 5.6831
+Epoch 83, Avg Loss: 5.6784
+Epoch 84, Avg Loss: 5.6645
+Epoch 85, Avg Loss: 5.6568
+Epoch 86, Avg Loss: 5.6612
+Epoch 87, Avg Loss: 5.6068
+Epoch 88, Avg Loss: 5.6018
+Epoch 89, Avg Loss: 5.6187
+Epoch 90, Avg Loss: 5.6019
+Epoch 91, Avg Loss: 5.5799
+Epoch 92, Avg Loss: 5.5664
+Epoch 93, Avg Loss: 5.5858
+Epoch 94, Avg Loss: 5.6019
+Epoch 95, Avg Loss: 5.5478
+Epoch 96, Avg Loss: 5.5630
+Epoch 97, Avg Loss: 5.5599
+Epoch 98, Avg Loss: 5.5709
+Epoch 99, Avg Loss: 5.5504
+Epoch 100, Avg Loss: 5.5258
+
+Starting game with seed: 443495
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: goumi
+Generated guess: goumi
+Submitting guess: goumi
+API response: [{'slot': 0, 'guess': 'g', 'result': 'absent'}, {'slot': 1, 'guess': 'o', 'result': 'absent'}, {'slot': 2, 'guess': 'u', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'm', 'result': 'absent'}, {'slot': 4, 'guess': 'i', 'result': 'present'}]
+
+Attempt 2:
+Found 2381 valid words.
+Best RDL guess: vifda
+Generated guess: vifda
+Submitting guess: vifda
+API response: [{'slot': 0, 'guess': 'v', 'result': 'absent'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'f', 'result': 'absent'}, {'slot': 3, 'guess
+': 'd', 'result': 'absent'}, {'slot': 4, 'guess': 'a', 'result': 'absent'}]
+
+Attempt 3:
+Found 437 valid words.
+Best RDL guess: sicht
+Generated guess: sicht
+Submitting guess: sicht
+API response: [{'slot': 0, 'guess': 's', 'result': 'absent'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 'c', 'result': 'absent'}, {'slot': 3, 'guess
+': 'h', 'result': 'correct'}, {'slot': 4, 'guess': 't', 'result': 'present'}]
+
+Attempt 4:
+Found 9 valid words.
+Best RDL guess: lithe
+Generated guess: lithe
+Submitting guess: lithe
+API response: [{'slot': 0, 'guess': 'l', 'result': 'correct'}, {'slot': 1, 'guess': 'i', 'result': 'correct'}, {'slot': 2, 'guess': 't', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'h', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+Success! The word is 'lithe'. Found in 4 attempts.
+
+Starting trial 8 of 10...
+Using seed: 76416
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 76416
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'present'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'guess
+': 's', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 2:
+Found 241 valid words.
+Best heuristic guess: lance
+Generated guess: lance
+Submitting guess: lance
+API response: [{'slot': 0, 'guess': 'l', 'result': 'present'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'n', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'c', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 3:
+Found 24 valid words.
+Best heuristic guess: hable
+Generated guess: hable
+Submitting guess: hable
+API response: [{'slot': 0, 'guess': 'h', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'l', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 4:
+Found 4 valid words.
+Best heuristic guess: fable
+Generated guess: fable
+Submitting guess: fable
+API response: [{'slot': 0, 'guess': 'f', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'l', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 5:
+Found 3 valid words.
+Best heuristic guess: gable
+Generated guess: gable
+Submitting guess: gable
+API response: [{'slot': 0, 'guess': 'g', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'l', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 6:
+Found 2 valid words.
+Best heuristic guess: table
+Generated guess: table
+Submitting guess: table
+API response: [{'slot': 0, 'guess': 't', 'result': 'correct'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'l', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+Success! The word is 'table'. Found in 6 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6757
+Epoch 2, Avg Loss: 9.6718
+Epoch 3, Avg Loss: 9.6650
+Epoch 4, Avg Loss: 9.6543
+Epoch 5, Avg Loss: 9.6379
+Epoch 6, Avg Loss: 9.6127
+Epoch 7, Avg Loss: 9.5624
+Epoch 8, Avg Loss: 9.4706
+Epoch 9, Avg Loss: 9.3045
+Epoch 10, Avg Loss: 9.0545
+Epoch 11, Avg Loss: 8.8333
+Epoch 12, Avg Loss: 8.7578
+Epoch 13, Avg Loss: 8.7356
+Epoch 14, Avg Loss: 8.7079
+Epoch 15, Avg Loss: 8.6457
+Epoch 16, Avg Loss: 8.6264
+Epoch 17, Avg Loss: 8.6152
+Epoch 18, Avg Loss: 8.5965
+Epoch 19, Avg Loss: 8.5921
+Epoch 20, Avg Loss: 8.5906
+Epoch 21, Avg Loss: 8.5690
+Epoch 22, Avg Loss: 8.5616
+Epoch 23, Avg Loss: 8.5549
+Epoch 24, Avg Loss: 8.5376
+Epoch 25, Avg Loss: 8.5187
+Epoch 26, Avg Loss: 8.5065
+Epoch 27, Avg Loss: 8.4790
+Epoch 28, Avg Loss: 8.4562
+Epoch 29, Avg Loss: 8.4204
+Epoch 30, Avg Loss: 8.3880
+Epoch 31, Avg Loss: 8.3499
+Epoch 32, Avg Loss: 8.3012
+Epoch 33, Avg Loss: 8.2602
+Epoch 34, Avg Loss: 8.1934
+Epoch 35, Avg Loss: 8.1485
+Epoch 36, Avg Loss: 8.0841
+Epoch 37, Avg Loss: 8.0290
+Epoch 38, Avg Loss: 7.9554
+Epoch 39, Avg Loss: 7.8819
+Epoch 40, Avg Loss: 7.8192
+Epoch 41, Avg Loss: 7.7450
+Epoch 42, Avg Loss: 7.6744
+Epoch 43, Avg Loss: 7.5877
+Epoch 44, Avg Loss: 7.5304
+Epoch 45, Avg Loss: 7.4260
+Epoch 46, Avg Loss: 7.3513
+Epoch 47, Avg Loss: 7.2624
+Epoch 48, Avg Loss: 7.2047
+Epoch 49, Avg Loss: 7.1526
+Epoch 50, Avg Loss: 7.0348
+Epoch 51, Avg Loss: 6.9819
+Epoch 52, Avg Loss: 6.9246
+Epoch 53, Avg Loss: 6.8255
+Epoch 54, Avg Loss: 6.7812
+Epoch 55, Avg Loss: 6.6916
+Epoch 56, Avg Loss: 6.6295
+Epoch 57, Avg Loss: 6.5895
+Epoch 58, Avg Loss: 6.5316
+Epoch 59, Avg Loss: 6.4950
+Epoch 60, Avg Loss: 6.4262
+Epoch 61, Avg Loss: 6.3472
+Epoch 62, Avg Loss: 6.3162
+Epoch 63, Avg Loss: 6.2884
+Epoch 64, Avg Loss: 6.2265
+Epoch 65, Avg Loss: 6.1686
+Epoch 66, Avg Loss: 6.1168
+Epoch 67, Avg Loss: 6.0666
+Epoch 68, Avg Loss: 6.0554
+Epoch 69, Avg Loss: 6.0135
+Epoch 70, Avg Loss: 5.9690
+Epoch 71, Avg Loss: 5.9242
+Epoch 72, Avg Loss: 5.8977
+Epoch 73, Avg Loss: 5.8845
+Epoch 74, Avg Loss: 5.8476
+Epoch 75, Avg Loss: 5.8066
+Epoch 76, Avg Loss: 5.8104
+Epoch 77, Avg Loss: 5.7753
+Epoch 78, Avg Loss: 5.7493
+Epoch 79, Avg Loss: 5.6796
+Epoch 80, Avg Loss: 5.6926
+Epoch 81, Avg Loss: 5.6467
+Epoch 82, Avg Loss: 5.6714
+Epoch 83, Avg Loss: 5.6330
+Epoch 84, Avg Loss: 5.6398
+Epoch 85, Avg Loss: 5.6116
+Epoch 86, Avg Loss: 5.5969
+Epoch 87, Avg Loss: 5.5435
+Epoch 88, Avg Loss: 5.5489
+Epoch 89, Avg Loss: 5.5726
+Epoch 90, Avg Loss: 5.5169
+Epoch 91, Avg Loss: 5.5117
+Epoch 92, Avg Loss: 5.5148
+Epoch 93, Avg Loss: 5.5201
+Epoch 94, Avg Loss: 5.5096
+Epoch 95, Avg Loss: 5.5269
+Epoch 96, Avg Loss: 5.5122
+Epoch 97, Avg Loss: 5.4910
+Epoch 98, Avg Loss: 5.4945
+Epoch 99, Avg Loss: 5.4838
+Epoch 100, Avg Loss: 5.5353
+
+Starting game with seed: 76416
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: upmix
+Generated guess: upmix
+Submitting guess: upmix
+API response: [{'slot': 0, 'guess': 'u', 'result': 'absent'}, {'slot': 1, 'guess': 'p', 'result': 'absent'}, {'slot': 2, 'guess': 'm', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'i', 'result': 'absent'}, {'slot': 4, 'guess': 'x', 'result': 'absent'}]
+
+Attempt 2:
+Found 6016 valid words.
+Best RDL guess: bryce
+Generated guess: bryce
+Submitting guess: bryce
+API response: [{'slot': 0, 'guess': 'b', 'result': 'present'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'y', 'result': 'absent'}, {'slot': 3, 'guess
+': 'c', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 3:
+Found 27 valid words.
+Best RDL guess: above
+Generated guess: above
+Submitting guess: above
+API response: [{'slot': 0, 'guess': 'a', 'result': 'present'}, {'slot': 1, 'guess': 'b', 'result': 'present'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'v', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 4:
+Found 8 valid words.
+Best RDL guess: galbe
+Generated guess: galbe
+Submitting guess: galbe
+API response: [{'slot': 0, 'guess': 'g', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'l', 'result': 'present'}, {'slot': 3, 'gues
+s': 'b', 'result': 'present'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 5:
+Found 5 valid words.
+Best RDL guess: hable
+Generated guess: hable
+Submitting guess: hable
+API response: [{'slot': 0, 'guess': 'h', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'l', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+
+Attempt 6:
+Found 4 valid words.
+Best RDL guess: sable
+Generated guess: sable
+Submitting guess: sable
+API response: [{'slot': 0, 'guess': 's', 'result': 'absent'}, {'slot': 1, 'guess': 'a', 'result': 'correct'}, {'slot': 2, 'guess': 'b', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'l', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'correct'}]
+Failed to find the word in 6 attempts.
+
+Starting trial 9 of 10...
+Using seed: 940848
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 940848
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'guess
+': 's', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'present'}]
+
+Attempt 2:
+Found 107 valid words.
+Best heuristic guess: alden
+Generated guess: alden
+Submitting guess: alden
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'l', 'result': 'present'}, {'slot': 2, 'guess': 'd', 'result': 'absent'}, {'slot': 3, 'gues
+s': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'n', 'result': 'present'}]
+
+Attempt 3:
+Found 3 valid words.
+Best heuristic guess: agnel
+Generated guess: agnel
+Submitting guess: agnel
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'g', 'result': 'present'}, {'slot': 2, 'guess': 'n', 'result': 'present'}, {'slot': 3, 'gue
+ss': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'correct'}]
+
+Attempt 4:
+Found 1 valid words.
+Best heuristic guess: angel
+Generated guess: angel
+Submitting guess: angel
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'n', 'result': 'correct'}, {'slot': 2, 'guess': 'g', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'correct'}]
+Success! The word is 'angel'. Found in 4 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6764
+Epoch 2, Avg Loss: 9.6721
+Epoch 3, Avg Loss: 9.6653
+Epoch 4, Avg Loss: 9.6560
+Epoch 5, Avg Loss: 9.6427
+Epoch 6, Avg Loss: 9.6130
+Epoch 7, Avg Loss: 9.5700
+Epoch 8, Avg Loss: 9.4815
+Epoch 9, Avg Loss: 9.3157
+Epoch 10, Avg Loss: 9.0864
+Epoch 11, Avg Loss: 8.8371
+Epoch 12, Avg Loss: 8.7443
+Epoch 13, Avg Loss: 8.7485
+Epoch 14, Avg Loss: 8.7122
+Epoch 15, Avg Loss: 8.6580
+Epoch 16, Avg Loss: 8.6306
+Epoch 17, Avg Loss: 8.6167
+Epoch 18, Avg Loss: 8.6106
+Epoch 19, Avg Loss: 8.5861
+Epoch 20, Avg Loss: 8.5927
+Epoch 21, Avg Loss: 8.5736
+Epoch 22, Avg Loss: 8.5655
+Epoch 23, Avg Loss: 8.5518
+Epoch 24, Avg Loss: 8.5322
+Epoch 25, Avg Loss: 8.5161
+Epoch 26, Avg Loss: 8.5037
+Epoch 27, Avg Loss: 8.4691
+Epoch 28, Avg Loss: 8.4516
+Epoch 29, Avg Loss: 8.4006
+Epoch 30, Avg Loss: 8.3799
+Epoch 31, Avg Loss: 8.3346
+Epoch 32, Avg Loss: 8.2820
+Epoch 33, Avg Loss: 8.2265
+Epoch 34, Avg Loss: 8.1911
+Epoch 35, Avg Loss: 8.1160
+Epoch 36, Avg Loss: 8.0671
+Epoch 37, Avg Loss: 8.0010
+Epoch 38, Avg Loss: 7.9204
+Epoch 39, Avg Loss: 7.8620
+Epoch 40, Avg Loss: 7.8170
+Epoch 41, Avg Loss: 7.7254
+Epoch 42, Avg Loss: 7.6520
+Epoch 43, Avg Loss: 7.6046
+Epoch 44, Avg Loss: 7.4954
+Epoch 45, Avg Loss: 7.4202
+Epoch 46, Avg Loss: 7.3602
+Epoch 47, Avg Loss: 7.2609
+Epoch 48, Avg Loss: 7.1997
+Epoch 49, Avg Loss: 7.1226
+Epoch 50, Avg Loss: 7.0246
+Epoch 51, Avg Loss: 6.9659
+Epoch 52, Avg Loss: 6.8977
+Epoch 53, Avg Loss: 6.8214
+Epoch 54, Avg Loss: 6.7899
+Epoch 55, Avg Loss: 6.6804
+Epoch 56, Avg Loss: 6.6570
+Epoch 57, Avg Loss: 6.5849
+Epoch 58, Avg Loss: 6.5366
+Epoch 59, Avg Loss: 6.4932
+Epoch 60, Avg Loss: 6.4572
+Epoch 61, Avg Loss: 6.4247
+Epoch 62, Avg Loss: 6.3428
+Epoch 63, Avg Loss: 6.2730
+Epoch 64, Avg Loss: 6.2405
+Epoch 65, Avg Loss: 6.1958
+Epoch 66, Avg Loss: 6.1744
+Epoch 67, Avg Loss: 6.0928
+Epoch 68, Avg Loss: 6.0845
+Epoch 69, Avg Loss: 6.0545
+Epoch 70, Avg Loss: 5.9996
+Epoch 71, Avg Loss: 5.9680
+Epoch 72, Avg Loss: 5.9293
+Epoch 73, Avg Loss: 5.9195
+Epoch 74, Avg Loss: 5.8871
+Epoch 75, Avg Loss: 5.8649
+Epoch 76, Avg Loss: 5.8299
+Epoch 77, Avg Loss: 5.7778
+Epoch 78, Avg Loss: 5.7658
+Epoch 79, Avg Loss: 5.7564
+Epoch 80, Avg Loss: 5.7196
+Epoch 81, Avg Loss: 5.7035
+Epoch 82, Avg Loss: 5.6779
+Epoch 83, Avg Loss: 5.6849
+Epoch 84, Avg Loss: 5.6473
+Epoch 85, Avg Loss: 5.6600
+Epoch 86, Avg Loss: 5.6454
+Epoch 87, Avg Loss: 5.6286
+Epoch 88, Avg Loss: 5.6017
+Epoch 89, Avg Loss: 5.5951
+Epoch 90, Avg Loss: 5.6264
+Epoch 91, Avg Loss: 5.5754
+Epoch 92, Avg Loss: 5.5770
+Epoch 93, Avg Loss: 5.5686
+Epoch 94, Avg Loss: 5.5704
+Epoch 95, Avg Loss: 5.5503
+Epoch 96, Avg Loss: 5.5698
+Epoch 97, Avg Loss: 5.5459
+Epoch 98, Avg Loss: 5.5516
+Epoch 99, Avg Loss: 5.5651
+Epoch 100, Avg Loss: 5.5613
+
+Starting game with seed: 940848
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: ocque
+Generated guess: ocque
+Submitting guess: ocque
+API response: [{'slot': 0, 'guess': 'o', 'result': 'absent'}, {'slot': 1, 'guess': 'c', 'result': 'absent'}, {'slot': 2, 'guess': 'q', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'u', 'result': 'absent'}, {'slot': 4, 'guess': 'e', 'result': 'present'}]
+
+Attempt 2:
+Found 3053 valid words.
+Best RDL guess: weepy
+Generated guess: weepy
+Submitting guess: weepy
+API response: [{'slot': 0, 'guess': 'w', 'result': 'absent'}, {'slot': 1, 'guess': 'e', 'result': 'present'}, {'slot': 2, 'guess': 'e', 'result': 'present'}, {'slot': 3, 'gues
+s': 'p', 'result': 'absent'}, {'slot': 4, 'guess': 'y', 'result': 'absent'}]
+
+Attempt 3:
+Found 844 valid words.
+Best RDL guess: adiel
+Generated guess: adiel
+Submitting guess: adiel
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'd', 'result': 'absent'}, {'slot': 2, 'guess': 'i', 'result': 'absent'}, {'slot': 3, 'guess
+': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'correct'}]
+
+Attempt 4:
+Found 10 valid words.
+Best RDL guess: athel
+Generated guess: athel
+Submitting guess: athel
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 't', 'result': 'absent'}, {'slot': 2, 'guess': 'h', 'result': 'absent'}, {'slot': 3, 'guess
+': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'correct'}]
+
+Attempt 5:
+Found 7 valid words.
+Best RDL guess: arvel
+Generated guess: arvel
+Submitting guess: arvel
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'r', 'result': 'absent'}, {'slot': 2, 'guess': 'v', 'result': 'absent'}, {'slot': 3, 'guess
+': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'correct'}]
+
+Attempt 6:
+Found 5 valid words.
+Best RDL guess: angel
+Generated guess: angel
+Submitting guess: angel
+API response: [{'slot': 0, 'guess': 'a', 'result': 'correct'}, {'slot': 1, 'guess': 'n', 'result': 'correct'}, {'slot': 2, 'guess': 'g', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'e', 'result': 'correct'}, {'slot': 4, 'guess': 'l', 'result': 'correct'}]
+Success! The word is 'angel'. Found in 6 attempts.
+
+Starting trial 10 of 10...
+Using seed: 210818
+
+Testing solver: WordleSolver
+Loading word list...
+Loaded 15921 valid words.
+
+Starting game with seed: 210818
+
+Attempt 1:
+Found 15921 valid words.
+Best heuristic guess: arose
+Generated guess: arose
+Submitting guess: arose
+API response: [{'slot': 0, 'guess': 'a', 'result': 'present'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'o', 'result': 'absent'}, {'slot': 3, 'gues
+s': 's', 'result': 'correct'}, {'slot': 4, 'guess': 'e', 'result': 'absent'}]
+
+Attempt 2:
+Found 13 valid words.
+Best heuristic guess: brast
+Generated guess: brast
+Submitting guess: brast
+API response: [{'slot': 0, 'guess': 'b', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gues
+s': 's', 'result': 'correct'}, {'slot': 4, 'guess': 't', 'result': 'absent'}]
+
+Attempt 3:
+Found 5 valid words.
+Best heuristic guess: crash
+Generated guess: crash
+Submitting guess: crash
+API response: [{'slot': 0, 'guess': 'c', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gues
+s': 's', 'result': 'correct'}, {'slot': 4, 'guess': 'h', 'result': 'absent'}]
+
+Attempt 4:
+Found 3 valid words.
+Best heuristic guess: grasp
+Generated guess: grasp
+Submitting guess: grasp
+API response: [{'slot': 0, 'guess': 'g', 'result': 'correct'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 's', 'result': 'correct'}, {'slot': 4, 'guess': 'p', 'result': 'correct'}]
+Success! The word is 'grasp'. Found in 4 attempts.
+
+Testing solver: WordleSolverRDL
+Loading word list...
+Loaded 15921 valid words.
+Training RDL model B...
+Epoch 1, Avg Loss: 9.6747
+Epoch 2, Avg Loss: 9.6715
+Epoch 3, Avg Loss: 9.6656
+Epoch 4, Avg Loss: 9.6549
+Epoch 5, Avg Loss: 9.6373
+Epoch 6, Avg Loss: 9.6146
+Epoch 7, Avg Loss: 9.5685
+Epoch 8, Avg Loss: 9.4741
+Epoch 9, Avg Loss: 9.3212
+Epoch 10, Avg Loss: 9.0665
+Epoch 11, Avg Loss: 8.8178
+Epoch 12, Avg Loss: 8.7351
+Epoch 13, Avg Loss: 8.7472
+Epoch 14, Avg Loss: 8.7121
+Epoch 15, Avg Loss: 8.6531
+Epoch 16, Avg Loss: 8.6272
+Epoch 17, Avg Loss: 8.6111
+Epoch 18, Avg Loss: 8.6180
+Epoch 19, Avg Loss: 8.6017
+Epoch 20, Avg Loss: 8.5804
+Epoch 21, Avg Loss: 8.5822
+Epoch 22, Avg Loss: 8.5672
+Epoch 23, Avg Loss: 8.5433
+Epoch 24, Avg Loss: 8.5353
+Epoch 25, Avg Loss: 8.5142
+Epoch 26, Avg Loss: 8.4918
+Epoch 27, Avg Loss: 8.4710
+Epoch 28, Avg Loss: 8.4450
+Epoch 29, Avg Loss: 8.4166
+Epoch 30, Avg Loss: 8.3824
+Epoch 31, Avg Loss: 8.3267
+Epoch 32, Avg Loss: 8.2862
+Epoch 33, Avg Loss: 8.2447
+Epoch 34, Avg Loss: 8.2014
+Epoch 35, Avg Loss: 8.1398
+Epoch 36, Avg Loss: 8.0697
+Epoch 37, Avg Loss: 7.9993
+Epoch 38, Avg Loss: 7.9293
+Epoch 39, Avg Loss: 7.8709
+Epoch 40, Avg Loss: 7.8070
+Epoch 41, Avg Loss: 7.7397
+Epoch 42, Avg Loss: 7.6480
+Epoch 43, Avg Loss: 7.5847
+Epoch 44, Avg Loss: 7.5337
+Epoch 45, Avg Loss: 7.4405
+Epoch 46, Avg Loss: 7.3596
+Epoch 47, Avg Loss: 7.2759
+Epoch 48, Avg Loss: 7.2162
+Epoch 49, Avg Loss: 7.1735
+Epoch 50, Avg Loss: 7.0859
+Epoch 51, Avg Loss: 7.0057
+Epoch 52, Avg Loss: 6.9207
+Epoch 53, Avg Loss: 6.9315
+Epoch 54, Avg Loss: 6.8304
+Epoch 55, Avg Loss: 6.7578
+Epoch 56, Avg Loss: 6.7088
+Epoch 57, Avg Loss: 6.6523
+Epoch 58, Avg Loss: 6.5733
+Epoch 59, Avg Loss: 6.5170
+Epoch 60, Avg Loss: 6.4633
+Epoch 61, Avg Loss: 6.4660
+Epoch 62, Avg Loss: 6.3674
+Epoch 63, Avg Loss: 6.3071
+Epoch 64, Avg Loss: 6.2751
+Epoch 65, Avg Loss: 6.2086
+Epoch 66, Avg Loss: 6.1875
+Epoch 67, Avg Loss: 6.1427
+Epoch 68, Avg Loss: 6.0846
+Epoch 69, Avg Loss: 6.0622
+Epoch 70, Avg Loss: 5.9901
+Epoch 71, Avg Loss: 5.9824
+Epoch 72, Avg Loss: 5.9403
+Epoch 73, Avg Loss: 5.9134
+Epoch 74, Avg Loss: 5.9153
+Epoch 75, Avg Loss: 5.8479
+Epoch 76, Avg Loss: 5.8505
+Epoch 77, Avg Loss: 5.8151
+Epoch 78, Avg Loss: 5.7943
+Epoch 79, Avg Loss: 5.7776
+Epoch 80, Avg Loss: 5.7101
+Epoch 81, Avg Loss: 5.7170
+Epoch 82, Avg Loss: 5.7115
+Epoch 83, Avg Loss: 5.6575
+Epoch 84, Avg Loss: 5.6719
+Epoch 85, Avg Loss: 5.6226
+Epoch 86, Avg Loss: 5.6440
+Epoch 87, Avg Loss: 5.6324
+Epoch 88, Avg Loss: 5.6266
+Epoch 89, Avg Loss: 5.6016
+Epoch 90, Avg Loss: 5.6007
+Epoch 91, Avg Loss: 5.5681
+Epoch 92, Avg Loss: 5.5994
+Epoch 93, Avg Loss: 5.5812
+Epoch 94, Avg Loss: 5.5541
+Epoch 95, Avg Loss: 5.5689
+Epoch 96, Avg Loss: 5.5866
+Epoch 97, Avg Loss: 5.5747
+Epoch 98, Avg Loss: 5.5766
+Epoch 99, Avg Loss: 5.5831
+Epoch 100, Avg Loss: 5.5385
+
+Starting game with seed: 210818
+
+Attempt 1:
+Found 15921 valid words.
+Best RDL guess: howff
+Generated guess: howff
+Submitting guess: howff
+API response: [{'slot': 0, 'guess': 'h', 'result': 'absent'}, {'slot': 1, 'guess': 'o', 'result': 'absent'}, {'slot': 2, 'guess': 'w', 'result': 'absent'}, {'slot': 3, 'guess'
+: 'f', 'result': 'absent'}, {'slot': 4, 'guess': 'f', 'result': 'absent'}]
+
+Attempt 2:
+Found 8266 valid words.
+Best RDL guess: akpek
+Generated guess: akpek
+Submitting guess: akpek
+API response: [{'slot': 0, 'guess': 'a', 'result': 'present'}, {'slot': 1, 'guess': 'k', 'result': 'absent'}, {'slot': 2, 'guess': 'p', 'result': 'present'}, {'slot': 3, 'gues
+s': 'e', 'result': 'absent'}, {'slot': 4, 'guess': 'k', 'result': 'absent'}]
+
+Attempt 3:
+Found 273 valid words.
+Best RDL guess: upaya
+Generated guess: upaya
+Submitting guess: upaya
+API response: [{'slot': 0, 'guess': 'u', 'result': 'absent'}, {'slot': 1, 'guess': 'p', 'result': 'present'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'y', 'result': 'absent'}, {'slot': 4, 'guess': 'a', 'result': 'present'}]
+
+Attempt 4:
+Found 40 valid words.
+Best RDL guess: prand
+Generated guess: prand
+Submitting guess: prand
+API response: [{'slot': 0, 'guess': 'p', 'result': 'present'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'n', 'result': 'absent'}, {'slot': 4, 'guess': 'd', 'result': 'absent'}]
+
+Attempt 5:
+Found 8 valid words.
+Best RDL guess: tramp
+Generated guess: tramp
+Submitting guess: tramp
+API response: [{'slot': 0, 'guess': 't', 'result': 'absent'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gues
+s': 'm', 'result': 'absent'}, {'slot': 4, 'guess': 'p', 'result': 'correct'}]
+
+Attempt 6:
+Found 2 valid words.
+Best RDL guess: graip
+Generated guess: graip
+Submitting guess: graip
+API response: [{'slot': 0, 'guess': 'g', 'result': 'correct'}, {'slot': 1, 'guess': 'r', 'result': 'correct'}, {'slot': 2, 'guess': 'a', 'result': 'correct'}, {'slot': 3, 'gue
+ss': 'i', 'result': 'absent'}, {'slot': 4, 'guess': 'p', 'result': 'correct'}]
+Failed to find the word in 6 attempts.
+
+Aggregated Results:
+                 success  attempts      time      seed
+solver
+WordleSolver         0.9       4.9  4.970129  557679.3
+WordleSolverRDL      0.6       5.1  7.026019  557679.3
+(wordle) zz242@cse-svr-03:~/wordle$ git reset --hard HEAD
+HEAD is now at af356eb fix
+(wordle) zz242@cse-svr-03:~/wordle$ git pull
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 2), reused 4 (delta 2), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 8.11 KiB | 4.05 MiB/s, done.
+From github.com:zz242msu/wordle
+   51cd380..566802e  main       -> origin/main
+Updating af356eb..566802e
+Fast-forward
+ RDL_exxact_A.txt | 1697 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ benchmark_rdl.py |   14 +-
+ 2 files changed, 1707 insertions(+), 4 deletions(-)
+ create mode 100644 RDL_exxact_A.txt
+(wordle) zz242@cse-svr-03:~/wordle$ tmux capture-pane -S -10000 -p > RDL_svr3_B.txt
+
