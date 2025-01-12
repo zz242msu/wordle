@@ -795,6 +795,163 @@ class LabelSmoothingCrossEntropy(nn.Module):
         smooth_loss = -logprobs.mean(dim=-1)
         loss = confidence * nll_loss + self.smoothing * smooth_loss
         return loss.mean()
+    
+class WordleSolverRDL_A2(WordleSolverBase):
+    def __init__(self, seed=None):
+        super().__init__(seed)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        # Keep the successful deeper architecture from A but add selective width
+        self.model = nn.Sequential(
+            # Input layer - slightly wider but not as extreme as B
+            nn.Linear(130, 896),  # Moderate increase from 768
+            nn.ReLU(),
+            nn.BatchNorm1d(896),  # Keep BatchNorm that worked in A
+            nn.Dropout(0.3),      # Keep dropout rate that worked in A
+            
+            # Hidden layers - maintain depth from A with moderate width
+            nn.Linear(896, 448),  # Proportional reduction
+            nn.ReLU(),
+            nn.BatchNorm1d(448),
+            nn.Dropout(0.3),
+            
+            nn.Linear(448, 224),
+            nn.ReLU(),
+            nn.BatchNorm1d(224),
+            nn.Dropout(0.2),      # Slightly reduce dropout in later layers
+            
+            # Output layer
+            nn.Linear(224, len(self.word_list))
+        ).to(self.device)
+        
+        # Keep the aggressive optimizer settings that worked in A
+        self.optimizer = optim.AdamW(
+            self.model.parameters(), 
+            lr=0.003,             # Keep the successful learning rate
+            weight_decay=1e-4,    # Keep the same weight decay
+            betas=(0.9, 0.999)    # Standard beta values
+        )
+        
+        # Keep standard cross entropy loss - no need for label smoothing yet
+        self.loss_fn = nn.CrossEntropyLoss()
+        
+        self.train_simulated_games()
+
+    def train_simulated_games(self):
+        train_start_time = time.time()
+        print("Training RDL model A2...")
+        batch_size = 512
+        num_epochs = 60  # Moderate increase from A
+        valid_targets = random.sample(self.word_list, 6000)  # Slight increase in training data
+        
+        # Keep the successful OneCycleLR scheduler with minor tweaks
+        scheduler = optim.lr_scheduler.OneCycleLR(
+            self.optimizer,
+            max_lr=0.003,
+            epochs=num_epochs,
+            steps_per_epoch=len(valid_targets) // batch_size,
+            pct_start=0.3,        # Keep warm-up period
+            anneal_strategy='cos',
+            div_factor=25.0,
+            final_div_factor=1000.0
+        )
+        
+        # Add early stopping with patience
+        best_loss = float('inf')
+        patience = 5
+        patience_counter = 0
+        best_model_state = None
+        
+        for epoch in range(num_epochs):
+            self.model.train()
+            total_loss = 0
+            
+            for _ in range(len(valid_targets) // batch_size):
+                states = []
+                target_indices = []
+                target_words = random.sample(valid_targets, batch_size)
+                
+                # Keep the successful training data generation strategy from A
+                for target_word in target_words:
+                    correct_letters, present_letters, absent_letters = {}, {}, set()
+                    num_known = random.randint(2, 4)  # Keep same range
+                    positions = random.sample(range(5), num_known)
+                    
+                    for i in positions:
+                        if random.random() < 0.65:  # Keep same probability
+                            correct_letters[i] = target_word[i]
+                        else:
+                            present_letters.setdefault(target_word[i], set()).add(i)
+
+                    potential_absent = set(chr(i) for i in range(97, 123)) - set(target_word)
+                    absent_letters.update(random.sample(list(potential_absent), 
+                                                    random.randint(4, 7)))  # Slightly adjusted range
+
+                    states.append((correct_letters, present_letters, absent_letters))
+                    target_indices.append(self.word_list.index(target_word))
+                
+                state_vectors = self.encode_state(states)
+                target_indices = torch.tensor(target_indices, dtype=torch.long, device=self.device)
+                
+                self.optimizer.zero_grad()
+                word_scores = self.model(state_vectors)
+                loss = self.loss_fn(word_scores, target_indices)
+                
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)  # Keep gradient clipping
+                
+                self.optimizer.step()
+                scheduler.step()
+                total_loss += loss.item()
+            
+            avg_loss = total_loss / (len(valid_targets) // batch_size)
+            print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
+            
+            # Early stopping check
+            if avg_loss < best_loss:
+                best_loss = avg_loss
+                best_model_state = self.model.state_dict()
+                patience_counter = 0
+            else:
+                patience_counter += 1
+                
+            if patience_counter >= patience:
+                print(f"Early stopping triggered after {epoch + 1} epochs")
+                self.model.load_state_dict(best_model_state)
+                break
+                
+            if avg_loss < 0.007:  # Slightly more stringent threshold
+                print("Reached target loss threshold. Stopping training.")
+                break
+
+        train_end_time = time.time()
+        print(f"Training took {train_end_time - train_start_time:.2f} seconds")
+
+    def generate_next_guess(self):
+        valid_words = self.get_valid_words()
+        if not valid_words:
+            return None
+            
+        self.model.eval()
+        with torch.no_grad():
+            state_vector = self.encode_state()
+            word_scores = self.model(state_vector.unsqueeze(0)).squeeze()
+            
+            # Keep the successful word selection strategy from A
+            # but add a small diversity bonus
+            valid_scores = []
+            for word in valid_words:
+                base_score = word_scores[self.word_list.index(word)].item()
+                # Small bonus for unique letters (5% max)
+                unique_letters = len(set(word))
+                diversity_bonus = unique_letters / 100.0
+                
+                final_score = base_score + diversity_bonus
+                valid_scores.append((word, final_score))
+            
+            best_word = max(valid_scores, key=lambda x: x[1])[0]
+            print(f"Best RDL_A2 guess: {best_word}")
+            return best_word
 
 # Benchmarking and Plotting
 def benchmark_solver(solver_classes, num_trials=10):
@@ -838,7 +995,9 @@ def plot_results(results, metrics=["attempts", "time"]):
         plt.close()  
 
 if __name__ == "__main__":
-    solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_B, WordleSolverRDL_C]
+    # solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_B, WordleSolverRDL_C]
+    solver_classes = [WordleSolver, WordleSolverRDL_A2]
+
     results = benchmark_solver(solver_classes, num_trials=10)
     print("\nAggregated Results:")
     print(results.groupby("solver").mean())
