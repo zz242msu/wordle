@@ -1,0 +1,11 @@
+Aggregated Results:
+                 success  attempts      time      seed
+solver
+WordleSolver         0.7       4.7  5.212212  374863.0
+WordleSolverRDL      0.8       4.6  6.868472  374863.0
+
+Aggregated Results:
+                   success  attempts   time        seed
+solver                                                 
+WordleSolver        0.9    4.5000 4.4423 461833.7
+WordleSolverRDL_C   0.7    5.0000 6.5625 461833.7
