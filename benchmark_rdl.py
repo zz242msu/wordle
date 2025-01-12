@@ -1061,6 +1061,10 @@ def plot_results(results, metrics=["attempts", "time"]):
         plt.close()  
 
 if __name__ == "__main__":
+    # Set display options to show all columns
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+    pd.set_option('display.max_rows', None)
     solver_classes = [WordleSolver, WordleSolverRDL_A2]
     results_df = benchmark_solver(solver_classes, num_trials=1)
     
