@@ -927,6 +927,40 @@ class WordleSolverRDL_A2(WordleSolverBase):
         train_end_time = time.time()
         print(f"Training took {train_end_time - train_start_time:.2f} seconds")
 
+    def encode_state(self, states=None):
+        if states is None:
+            state_vector = np.zeros(130, dtype=np.float32)
+            for slot, letter in self.correct_letters.items():
+                state_vector[ord(letter) - ord('a') + slot * 26] = 1
+            for letter, invalid_slots in self.present_letters.items():
+                base_idx = ord(letter) - ord('a')
+                for slot in range(5):
+                    if slot in invalid_slots:
+                        state_vector[base_idx + slot * 26] = -0.5
+                    else:
+                        state_vector[base_idx + slot * 26] = 0.5
+            for letter in self.absent_letters:
+                for slot in range(5):
+                    state_vector[ord(letter) - ord('a') + slot * 26] = -1
+            return torch.from_numpy(state_vector).to(self.device)
+        else:
+            batch_vectors = np.zeros((len(states), 130), dtype=np.float32)
+            for i, (correct_letters, present_letters, absent_letters) in enumerate(states):
+                for slot, letter in correct_letters.items():
+                    batch_vectors[i, ord(letter) - ord('a') + slot * 26] = 1
+                for letter, invalid_slots in present_letters.items():
+                    base_idx = ord(letter) - ord('a')
+                    for slot in range(5):
+                        if slot in invalid_slots:
+                            batch_vectors[i, base_idx + slot * 26] = -0.5
+                        else:
+                            batch_vectors[i, base_idx + slot * 26] = 0.5
+                for letter in absent_letters:
+                    for slot in range(5):
+                        batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1
+            return torch.from_numpy(batch_vectors).to(self.device)
+
+
     def generate_next_guess(self):
         valid_words = self.get_valid_words()
         if not valid_words:
