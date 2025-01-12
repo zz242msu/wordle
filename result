@@ -1,11 +1,15 @@
-Aggregated Results:
-                 success  attempts      time      
-solver
-WordleSolver         0.7       4.7  5.212212  
-WordleSolverRDL      0.8       4.6  6.868472  
+solver            success attempts time      
+WordleSolver      0.7     4.7       5.2122 
+WordleSolverRDL   0.8     4.6       6.8685 
 
-Aggregated Results:
-                   success  attempts   time        
-solver                                                 
-WordleSolver        0.9    4.5000 4.4423 
-WordleSolverRDL_C   0.7    5.0000 6.5625 7
+solver            success attempts  time      
+WordleSolver      0.8     5.0       5.5673 
+WordleSolverRDL_A 0.9     5.0       6.3462 
+
+solver            success attempts  time      
+WordleSolver      0.9     4.9       4.9701  
+WordleSolverRDL_B 0.6     5.1       7.0260  
+
+solver            success attempts  time      
+WordleSolver      0.9     4.5       4.4423 
+WordleSolverRDL_C 0.7     5.0       6.5625 
