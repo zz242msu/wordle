@@ -180,6 +180,88 @@ class WordleSolverRDL(WordleSolverBase):
                     for slot in range(5):
                         batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1
             return torch.from_numpy(batch_vectors).to(self.device)
+    
+    def train_simulated_games(self):
+        print("Training RDL model...")
+        batch_size = 512
+        num_epochs = 20
+        valid_targets = random.sample(self.word_list, 5000) 
+
+        scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
+            self.optimizer,
+            T_0=5,   
+            T_mult=2 
+        )
+
+        for epoch in range(num_epochs):
+            self.model.train()
+            total_loss = 0
+            num_batches = len(valid_targets) // batch_size
+            
+            for _ in range(batch_size):
+                states = []
+                target_indices = []
+                target_words = random.sample(valid_targets, batch_size)
+
+                for target_word in target_words:
+                    correct_letters, present_letters, absent_letters = {}, {}, set()
+                    num_known = random.randint(1, 3)  
+                    positions = random.sample(range(5), num_known)
+                    
+                    for i in positions:
+                        if random.random() < 0.6:  
+                            correct_letters[i] = target_word[i]
+                        else:
+                            present_letters.setdefault(target_word[i], set()).add(i)
+
+                    potential_absent = set(chr(i) for i in range(97, 123)) - set(target_word)
+                    absent_letters.update(random.sample(list(potential_absent), 
+                                                    random.randint(3, 6)))
+
+                    states.append((correct_letters, present_letters, absent_letters))
+                    target_indices.append(self.word_list.index(target_word))
+
+                # convert states to tensors
+                state_vectors = self.encode_state(states)
+                target_indices = torch.tensor(target_indices, dtype=torch.long, device=self.device)
+
+                # forward
+                self.optimizer.zero_grad()
+                word_scores = self.model(state_vectors)
+                loss = self.loss_fn(word_scores, target_indices)
+
+                # backward
+                loss.backward()
+                
+                # add gradient clipping
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
+                
+                self.optimizer.step()
+                total_loss += loss.item()
+
+            avg_loss = total_loss / batch_size
+            print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
+
+            # update learning rate
+            scheduler.step(avg_loss)
+
+            # stop training if the loss is below a threshold
+            if avg_loss < 0.01:
+                print("Reached target loss threshold. Stopping training.")
+                break
+
+    def generate_next_guess(self):
+        valid_words = self.get_valid_words()
+        if not valid_words:
+            return None
+        self.model.eval()
+        with torch.no_grad():
+            state_vector = self.encode_state()
+            word_scores = self.model(state_vector.unsqueeze(0)).squeeze()
+            valid_scores = [(word, word_scores[self.word_list.index(word)].item()) for word in valid_words]
+            best_word = max(valid_scores, key=lambda x: x[1])[0]
+            print(f"Best RDL guess: {best_word}")
+            return best_word
 
     
 # A. deeper network + more aggressive optimizer settings
@@ -719,7 +801,7 @@ def benchmark_solver(solver_classes, num_trials=10):
     results = []
     for solver_class in solver_classes:
         total_training_time = time.time()
-        solver = solver_class()  # 训练时间会记录在这里
+        solver = solver_class() 
         training_time = time.time() - total_training_time
         print(f"\n{solver_class.__name__} training time: {training_time:.2f} seconds")
         
@@ -752,9 +834,8 @@ def plot_results(results, metrics=["attempts", "time"]):
         plt.suptitle("")
         plt.xlabel("Solver")
         plt.ylabel(metric.capitalize())
-        # 保存到文件而不是显示
         plt.savefig(f'{metric}_comparison.png')
-        plt.close()  # 关闭图形，释放内存
+        plt.close()  
 
 if __name__ == "__main__":
     solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_B, WordleSolverRDL_C]
