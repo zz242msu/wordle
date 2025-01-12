@@ -1017,7 +1017,41 @@ def benchmark_solver(solver_classes, num_trials=10):
         avg_solve_time = sum(solving_times) / len(solving_times)
         print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
 
+def benchmark_solver(solver_classes, num_trials=10):
+    results = []
+    for solver_class in solver_classes:
+        total_training_time = time.time()
+        solver = solver_class() 
+        training_time = time.time() - total_training_time
+        print(f"\n{solver_class.__name__} training time: {training_time:.2f} seconds")
+        
+        solving_times = []
+        for trial in range(num_trials):
+            print(f"\nStarting trial {trial + 1} of {num_trials}...")
+            seed = random.randint(1, 1000000)
+            solver = solver_class(seed=seed)
+            start_time = time.time()
+            success = solver.solve()
+            solve_time = time.time() - start_time
+            solving_times.append(solve_time)
+            
+            results.append({
+                "solver": solver_class.__name__,
+                "success": int(success),  # Convert boolean to int for averaging
+                "attempts": len(solver.previous_guesses) if success else 6,
+                "training_time": training_time,
+                "solve_time": solve_time
+            })
+            
+        avg_solve_time = sum(solving_times) / len(solving_times)
+        print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
+    
+    # Convert results to DataFrame
+    import pandas as pd
+    return pd.DataFrame(results)
+
 def plot_results(results, metrics=["attempts", "time"]):
+    import matplotlib.pyplot as plt
     for metric in metrics:
         plt.figure(figsize=(10, 6))
         results.boxplot(column=metric, by="solver")
@@ -1029,10 +1063,8 @@ def plot_results(results, metrics=["attempts", "time"]):
         plt.close()  
 
 if __name__ == "__main__":
-    # solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_B, WordleSolverRDL_C]
     solver_classes = [WordleSolver, WordleSolverRDL_A2]
-
-    results = benchmark_solver(solver_classes, num_trials=10)
+    results_df = benchmark_solver(solver_classes, num_trials=10)
+    
     print("\nAggregated Results:")
-    print(results.groupby("solver").mean())
-    plot_results(results, metrics=["attempts", "time"])
+    print(results_df.groupby("solver").mean())
