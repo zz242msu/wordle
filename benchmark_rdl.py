@@ -1007,7 +1007,7 @@ if __name__ == "__main__":
     
     # solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_A2]
     solver_classes = [WordleSolver, WordleSolverRDL_A]
-    results_df = benchmark_solver(solver_classes, num_trials=20)
+    results_df = benchmark_solver(solver_classes, num_trials=10)
     
     print("\nAggregated Results:")
     print(results_df.groupby("solver").mean().round(3))
