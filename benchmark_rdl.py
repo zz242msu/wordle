@@ -1017,7 +1017,7 @@ class WordleSolverRDL_A2(WordleSolverBase):
 #         avg_solve_time = sum(solving_times) / len(solving_times)
 #         print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
 
-def benchmark_solver(solver_classes, num_trials=1):
+def benchmark_solver(solver_classes, num_trials=10):
     results = []
     for solver_class in solver_classes:
         total_training_time = time.time()
@@ -1062,7 +1062,7 @@ def plot_results(results, metrics=["attempts", "time"]):
 
 if __name__ == "__main__":
     solver_classes = [WordleSolver, WordleSolverRDL_A2]
-    results_df = benchmark_solver(solver_classes, num_trials=10)
+    results_df = benchmark_solver(solver_classes, num_trials=1)
     
     print("\nAggregated Results:")
     print(results_df.groupby("solver").mean())
