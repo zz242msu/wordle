@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from collections import defaultdict
-
+import torch.nn.functional as F
 
 # Suppress SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -113,7 +113,7 @@ class WordleSolverBase:
         print("Failed to find the word in 6 attempts.")
         return False
 
-# Heuristic Wordle Solver (unchanged)
+# Heuristic Wordle Solver
 class WordleSolver(WordleSolverBase):
     def generate_next_guess(self):
         valid_words = self.get_valid_words()
@@ -125,266 +125,74 @@ class WordleSolver(WordleSolverBase):
         print(f"Best heuristic guess: {best_word}")
         return best_word
 
-# # ML-based Wordle Solver (unchanged)
-# class WordleSolverML(WordleSolverBase):
-#     def __init__(self, seed=None):
-#         super().__init__(seed)
-#         print("Initializing ML model...")
-#         self.vectorizer = CountVectorizer(analyzer="char", ngram_range=(1, 2))
-#         self.model = GradientBoostingRegressor(n_estimators=100, random_state=42)
-#         self.train_model()
-
-#     def train_model(self):
-#         print("Training ML model...")
-#         X = self.vectorizer.fit_transform(self.word_list)
-#         letter_freq = Counter("".join(self.word_list))
-#         total_letters = sum(letter_freq.values())
-#         letter_prob = {letter: count / total_letters for letter, count in letter_freq.items()}
-#         y = np.array([sum(letter_prob[char] for char in word) for word in self.word_list])
-#         self.model.fit(X, y)
-#         print("ML model trained.")
-
-#     def generate_next_guess(self):
-#         valid_words = self.get_valid_words()
-#         if not valid_words:
-#             return None
-#         X = self.vectorizer.transform(valid_words)
-#         scores = self.model.predict(X)
-#         best_word = valid_words[np.argmax(scores)]
-#         print(f"Best ML guess: {best_word}")
-#         return best_word
-
-# # 可行方案 over 80% accuracy, 效果首次比启发式好
-# class WordleSolverRDL(WordleSolverBase):
-#     def __init__(self, seed=None):
-#         super().__init__(seed)
-#         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-#         # self.model = nn.Sequential(
-#         #     nn.Linear(130, 256),
-#         #     nn.ReLU(),
-#         #     nn.Dropout(0.2),
-#         #     nn.Linear(256, 128),
-#         #     nn.ReLU(),
-#         #     nn.Dropout(0.2),
-#         #     nn.Linear(128, 64),
-#         #     nn.ReLU(),
-#         #     nn.Linear(64, len(self.word_list))
-#         # ).to(self.device)
-#         # 模型架构改进
-#         self.model = nn.Sequential(
-#             nn.Linear(130, 512),  # 增大第一层
-#             nn.ReLU(),
-#             nn.Dropout(0.3),
-#             nn.Linear(512, 256),  # 增加中间层容量
-#             nn.ReLU(),
-#             nn.Dropout(0.3),
-#             nn.Linear(256, 128),
-#             nn.ReLU(),
-#             nn.Linear(128, len(self.word_list))
-#         ).to(self.device)
-#         # self.optimizer = optim.Adam(self.model.parameters(), lr=0.001, weight_decay=1e-5)
-#         # 使用更强的优化器
-#         self.optimizer = optim.AdamW(self.model.parameters(), 
-#                                     lr=0.002,  # 略微提高初始学习率
-#                                     weight_decay=1e-4)  # 增加正则化
-#         self.loss_fn = nn.CrossEntropyLoss()
-#         self.train_simulated_games()
-
-#     def encode_state(self, states=None):
-#         if states is None:
-#             state_vector = np.zeros(130, dtype=np.float32)
-#             for slot, letter in self.correct_letters.items():
-#                 state_vector[ord(letter) - ord('a') + slot * 26] = 1
-#             for letter, invalid_slots in self.present_letters.items():
-#                 base_idx = ord(letter) - ord('a')
-#                 for slot in range(5):
-#                     if slot in invalid_slots:
-#                         state_vector[base_idx + slot * 26] = -0.5
-#                     else:
-#                         state_vector[base_idx + slot * 26] = 0.5
-#             for letter in self.absent_letters:
-#                 for slot in range(5):
-#                     state_vector[ord(letter) - ord('a') + slot * 26] = -1
-#             return torch.from_numpy(state_vector).to(self.device)
-#         else:
-#             batch_vectors = np.zeros((len(states), 130), dtype=np.float32)
-#             for i, (correct_letters, present_letters, absent_letters) in enumerate(states):
-#                 for slot, letter in correct_letters.items():
-#                     batch_vectors[i, ord(letter) - ord('a') + slot * 26] = 1
-#                 for letter, invalid_slots in present_letters.items():
-#                     base_idx = ord(letter) - ord('a')
-#                     for slot in range(5):
-#                         if slot in invalid_slots:
-#                             batch_vectors[i, base_idx + slot * 26] = -0.5
-#                         else:
-#                             batch_vectors[i, base_idx + slot * 26] = 0.5
-#                 for letter in absent_letters:
-#                     for slot in range(5):
-#                         batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1
-#             return torch.from_numpy(batch_vectors).to(self.device)
-
-#     # w/o 学习率衰减
-#     # def train_simulated_games(self):
-#     #     print("Training RDL model...")
-#     #     batch_size = 256
-#     #     num_epochs = 20
-#     #     valid_targets = random.sample(self.word_list, 5000)  # Use a smaller subset for training
-
-#     #     for epoch in range(num_epochs):
-#     #         self.model.train()
-#     #         total_loss = 0
-#     #         for _ in range(batch_size):
-#     #             states = []
-#     #             target_indices = []
-#     #             target_words = random.sample(valid_targets, batch_size)
-
-#     #             for target_word in target_words:
-#     #                 correct_letters, present_letters, absent_letters = {}, {}, set()
-#     #                 # Randomly simulate known information
-#     #                 for i in range(5):
-#     #                     if random.random() < 0.3:
-#     #                         correct_letters[i] = target_word[i]
-#     #                     elif random.random() < 0.3:
-#     #                         present_letters.setdefault(target_word[i], set()).add(i)
-#     #                 absent_letters.update({chr(random.randint(97, 122)) for _ in range(5)} - set(target_word))
-
-#     #                 states.append((correct_letters, present_letters, absent_letters))
-#     #                 target_indices.append(self.word_list.index(target_word))  # Store index of target word
-
-#     #             # Encode states into feature vectors
-#     #             state_vectors = self.encode_state(states)
-#     #             target_indices = torch.tensor(target_indices, dtype=torch.long, device=self.device)  # Convert to tensor
-
-#     #             # Forward pass
-#     #             word_scores = self.model(state_vectors)
-
-#     #             # Compute loss using target indices
-#     #             loss = self.loss_fn(word_scores, target_indices)
-
-#     #             # Backward pass
-#     #             self.optimizer.zero_grad()
-#     #             loss.backward()
-#     #             self.optimizer.step()
-
-#     #             total_loss += loss.item()
-
-#     #         avg_loss = total_loss / batch_size
-#     #         print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
-
-#     #         # Early stopping
-#     #         if avg_loss < 0.01:
-#     #             print("Early stopping due to convergence.")
-#     #             break
-
-#     def train_simulated_games(self):
-#         print("Training RDL model...")
-#         batch_size = 512
-#         # num_epochs = 20
-#         num_epochs = 40 # 增加训练轮数
-#         valid_targets = random.sample(self.word_list, 5000)  # 保持原有训练集大小
-
-#         # # 添加学习率衰减策略
-#         # scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-#         #     self.optimizer,
-#         #     mode='min',
-#         #     # factor=0.5,
-#         #     # patience=2,
-#         #     factor=0.3,    # 改为0.3让学习率下降更温和
-#         #     patience=3,    # 增加耐心值
-#         #     verbose=True
-#         # )
-
-#         # 使用更激进的学习率调度
-#         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
-#             self.optimizer,
-#             T_0=5,    # 第一次重启的周期长度
-#             T_mult=2  # 每次重启后周期长度翻倍
-#         )
-
-#         for epoch in range(num_epochs):
-#             self.model.train()
-#             total_loss = 0
-#             num_batches = len(valid_targets) // batch_size
-            
-#             for _ in range(batch_size):
-#                 states = []
-#                 target_indices = []
-#                 target_words = random.sample(valid_targets, batch_size)
-
-#                 for target_word in target_words:
-#                     correct_letters, present_letters, absent_letters = {}, {}, set()
-#                     # 优化状态模拟
-#                     num_known = random.randint(1, 3)  # 确保至少有一些已知信息
-#                     positions = random.sample(range(5), num_known)
-                    
-#                     for i in positions:
-#                         if random.random() < 0.6:  # 60%概率是正确位置
-#                             correct_letters[i] = target_word[i]
-#                         else:
-#                             present_letters.setdefault(target_word[i], set()).add(i)
-
-#                     # 添加合理数量的不存在字母
-#                     potential_absent = set(chr(i) for i in range(97, 123)) - set(target_word)
-#                     absent_letters.update(random.sample(list(potential_absent), 
-#                                                     random.randint(3, 6)))
-
-#                     states.append((correct_letters, present_letters, absent_letters))
-#                     target_indices.append(self.word_list.index(target_word))
-
-#                 # 转换状态为特征向量
-#                 state_vectors = self.encode_state(states)
-#                 target_indices = torch.tensor(target_indices, dtype=torch.long, device=self.device)
-
-#                 # 前向传播
-#                 self.optimizer.zero_grad()
-#                 word_scores = self.model(state_vectors)
-#                 loss = self.loss_fn(word_scores, target_indices)
-
-#                 # 反向传播
-#                 loss.backward()
-                
-#                 # 添加梯度裁剪
-#                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
-                
-#                 self.optimizer.step()
-#                 total_loss += loss.item()
-
-#             avg_loss = total_loss / batch_size
-#             print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
-
-#             # 更新学习率
-#             scheduler.step(avg_loss)
-
-#             # 如果损失足够小则提前停止
-#             if avg_loss < 0.01:
-#                 print("Reached target loss threshold. Stopping training.")
-#                 break
-
-#     def generate_next_guess(self):
-#         valid_words = self.get_valid_words()
-#         if not valid_words:
-#             return None
-#         self.model.eval()
-#         with torch.no_grad():
-#             state_vector = self.encode_state()
-#             word_scores = self.model(state_vector.unsqueeze(0)).squeeze()
-#             valid_scores = [(word, word_scores[self.word_list.index(word)].item()) for word in valid_words]
-#             best_word = max(valid_scores, key=lambda x: x[1])[0]
-#             print(f"Best RDL guess: {best_word}")
-#             return best_word
-
-    
-# 改进方案A：更深的网络 + 激进的学习策略
+# over 80% accuracy
 class WordleSolverRDL(WordleSolverBase):
     def __init__(self, seed=None):
         super().__init__(seed)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        
-        # 更深的网络结构
         self.model = nn.Sequential(
-            nn.Linear(130, 768),  # 显著增大第一层
+            nn.Linear(130, 512), 
             nn.ReLU(),
-            nn.BatchNorm1d(768),  # 添加BatchNorm
+            nn.Dropout(0.3),
+            nn.Linear(512, 256), 
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, len(self.word_list))
+        ).to(self.device)
+        # self.optimizer = optim.Adam(self.model.parameters(), lr=0.001, weight_decay=1e-5)
+        self.optimizer = optim.AdamW(self.model.parameters(), 
+                                    lr=0.002, 
+                                    weight_decay=1e-4) 
+        self.loss_fn = nn.CrossEntropyLoss()
+        self.train_simulated_games()
+
+    def encode_state(self, states=None):
+        if states is None:
+            state_vector = np.zeros(130, dtype=np.float32)
+            for slot, letter in self.correct_letters.items():
+                state_vector[ord(letter) - ord('a') + slot * 26] = 1
+            for letter, invalid_slots in self.present_letters.items():
+                base_idx = ord(letter) - ord('a')
+                for slot in range(5):
+                    if slot in invalid_slots:
+                        state_vector[base_idx + slot * 26] = -0.5
+                    else:
+                        state_vector[base_idx + slot * 26] = 0.5
+            for letter in self.absent_letters:
+                for slot in range(5):
+                    state_vector[ord(letter) - ord('a') + slot * 26] = -1
+            return torch.from_numpy(state_vector).to(self.device)
+        else:
+            batch_vectors = np.zeros((len(states), 130), dtype=np.float32)
+            for i, (correct_letters, present_letters, absent_letters) in enumerate(states):
+                for slot, letter in correct_letters.items():
+                    batch_vectors[i, ord(letter) - ord('a') + slot * 26] = 1
+                for letter, invalid_slots in present_letters.items():
+                    base_idx = ord(letter) - ord('a')
+                    for slot in range(5):
+                        if slot in invalid_slots:
+                            batch_vectors[i, base_idx + slot * 26] = -0.5
+                        else:
+                            batch_vectors[i, base_idx + slot * 26] = 0.5
+                for letter in absent_letters:
+                    for slot in range(5):
+                        batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1
+            return torch.from_numpy(batch_vectors).to(self.device)
+
+    
+# A. deeper network + more aggressive optimizer settings
+class WordleSolverRDL_A(WordleSolverBase):
+    def __init__(self, seed=None):
+        super().__init__(seed)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        # deeper network
+        self.model = nn.Sequential(
+            nn.Linear(130, 768),  # deepen the first layer
+            nn.ReLU(),
+            nn.BatchNorm1d(768),  # add BatchNorm
             nn.Dropout(0.3),
             nn.Linear(768, 384),
             nn.ReLU(),
@@ -396,17 +204,16 @@ class WordleSolverRDL(WordleSolverBase):
             nn.Linear(192, len(self.word_list))
         ).to(self.device)
         
-        # 使用更激进的优化器设置
+        # use a more aggressive optimizer setting
         self.optimizer = optim.AdamW(
             self.model.parameters(), 
-            lr=0.003,  # 更高的初始学习率
+            lr=0.003,  # a higher learning rate
             weight_decay=1e-4,
             betas=(0.9, 0.999)
         )
         self.loss_fn = nn.CrossEntropyLoss()
         self.train_simulated_games()
 
-    # 两个方案共用的编码方法
     def encode_state(self, states=None):
         if states is None:
             state_vector = np.zeros(130, dtype=np.float32)
@@ -441,17 +248,18 @@ class WordleSolverRDL(WordleSolverBase):
             return torch.from_numpy(batch_vectors).to(self.device)
 
     def train_simulated_games(self):
+        train_start_time = time.time()
         print("Training RDL model A...")
-        batch_size = 512  # 保持较大的batch size
-        num_epochs = 80   # 显著增加训练轮数
-        valid_targets = random.sample(self.word_list, 6000)  # 增加训练样本
+        batch_size = 512  # keep the batch size
+        num_epochs = 80   # increase the number of epochs
+        valid_targets = random.sample(self.word_list, 6000)  # increase the number of training samples
 
-        # 使用周期性学习率重启
+        # use a more aggressive learning rate scheduler
         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             self.optimizer,
-            T_0=10,    # 第一次重启的周期
-            T_mult=2,  # 每次重启后周期翻倍
-            eta_min=1e-6  # 最小学习率
+            T_0=10,    # first restart period
+            T_mult=2,  # increase the period after each restart
+            eta_min=1e-6  # minimum learning rate
         )
 
         for epoch in range(num_epochs):
@@ -502,6 +310,9 @@ class WordleSolverRDL(WordleSolverBase):
                 print("Reached target loss threshold. Stopping training.")
                 break
 
+        train_end_time = time.time()
+        print(f"Training took {train_end_time - train_start_time:.2f} seconds")
+
     def generate_next_guess(self):
         valid_words = self.get_valid_words()
         if not valid_words:
@@ -515,15 +326,15 @@ class WordleSolverRDL(WordleSolverBase):
             print(f"Best RDL guess: {best_word}")
             return best_word
 
-# 改进方案B：宽而浅的网络 + 保守的学习策略
+# B. wider network + more conservative optimizer settings
 class WordleSolverRDL_B(WordleSolverBase):
     def __init__(self, seed=None):
         super().__init__(seed)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
-        # 宽而浅的网络
+        # wider network
         self.model = nn.Sequential(
-            nn.Linear(130, 1024),  # 非常宽的第一层
+            nn.Linear(130, 1024),  # widen the first layer
             nn.ReLU(),
             nn.Dropout(0.2),
             nn.Linear(1024, 512),
@@ -532,17 +343,16 @@ class WordleSolverRDL_B(WordleSolverBase):
             nn.Linear(512, len(self.word_list))
         ).to(self.device)
         
-        # 保守的优化器设置
+        # conservative optimizer settings
         self.optimizer = optim.AdamW(
             self.model.parameters(), 
-            lr=0.001,  # 保守的学习率
-            weight_decay=5e-5,  # 较小的权重衰减
-            betas=(0.9, 0.95)  # 更保守的动量参数
+            lr=0.001,  # conservative learning rate
+            weight_decay=5e-5,  # lower weight decay
+            betas=(0.9, 0.95)  # more conservative beta values
         )
         self.loss_fn = nn.CrossEntropyLoss()
         self.train_simulated_games()
 
-    # 两个方案共用的编码方法
     def encode_state(self, states=None):
         if states is None:
             state_vector = np.zeros(130, dtype=np.float32)
@@ -577,18 +387,19 @@ class WordleSolverRDL_B(WordleSolverBase):
             return torch.from_numpy(batch_vectors).to(self.device)
 
     def train_simulated_games(self):
+        train_start_time = time.time()
         print("Training RDL model B...")
         batch_size = 512
-        num_epochs = 100  # 使用更多epoch进行充分训练
+        num_epochs = 100  # increase the number of epochs
         valid_targets = random.sample(self.word_list, 5000)
 
-        # 使用更温和的学习率调度
+        # use One Cycle learning rate scheduler
         scheduler = optim.lr_scheduler.OneCycleLR(
             self.optimizer,
             max_lr=0.001,
             epochs=num_epochs,
             steps_per_epoch=len(valid_targets) // batch_size,
-            pct_start=0.4,  # 40%时间用于预热
+            pct_start=0.4,  # 40% of the time for warm-up
             div_factor=20.0,
             final_div_factor=1000.0
         )
@@ -609,11 +420,11 @@ class WordleSolverRDL_B(WordleSolverBase):
 
                 for target_word in target_words:
                     correct_letters, present_letters, absent_letters = {}, {}, set()
-                    num_known = random.randint(2, 3)  # 稍微减少已知信息
+                    num_known = random.randint(2, 3)  # lower the number of known letters
                     positions = random.sample(range(5), num_known)
                     
                     for i in positions:
-                        if random.random() < 0.75:  # 提高正确位置的概率
+                        if random.random() < 0.75:  # increase the probability of correct letters
                             correct_letters[i] = target_word[i]
                         else:
                             present_letters.setdefault(target_word[i], set()).add(i)
@@ -633,7 +444,7 @@ class WordleSolverRDL_B(WordleSolverBase):
                 loss = self.loss_fn(word_scores, target_indices)
                 
                 loss.backward()
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=0.5)  # 更保守的梯度裁剪
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=0.5)  # lower the gradient clipping threshold
                 
                 self.optimizer.step()
                 scheduler.step()
@@ -642,7 +453,6 @@ class WordleSolverRDL_B(WordleSolverBase):
             avg_loss = total_loss / (len(valid_targets) // batch_size)
             print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
 
-            # 保存最佳模型
             if avg_loss < best_loss:
                 best_loss = avg_loss
                 best_model_state = self.model.state_dict()
@@ -659,6 +469,9 @@ class WordleSolverRDL_B(WordleSolverBase):
                 print("Reached target loss threshold. Stopping training.")
                 break
 
+        train_end_time = time.time()
+        print(f"Training took {train_end_time - train_start_time:.2f} seconds")        
+
     def generate_next_guess(self):
         valid_words = self.get_valid_words()
         if not valid_words:
@@ -671,171 +484,265 @@ class WordleSolverRDL_B(WordleSolverBase):
             best_word = max(valid_scores, key=lambda x: x[1])[0]
             print(f"Best RDL guess: {best_word}")
             return best_word
-
-# # RDL with ResidualBlock
-# class WordleSolverRDL(WordleSolverBase):
-#     def __init__(self, seed=None):
-#         super().__init__(seed)
-#         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
-#         # 增强型网络架构
-#         self.model = nn.Sequential(
-#             nn.Linear(130, 512),
-#             nn.LayerNorm(512),
-#             nn.ReLU(),
-#             nn.Dropout(0.3),
-#             ResidualBlock(512),
-#             ResidualBlock(512),
-#             nn.Linear(512, 256),
-#             nn.LayerNorm(256),
-#             nn.ReLU(),
-#             ResidualBlock(256),
-#             nn.Linear(256, len(self.word_list))
-#         ).to(self.device)
+
+# C. deeper and wider network + improved optimizer settings
+class WordleSolverRDL_C(WordleSolverBase):
+    def __init__(self, seed=None):
+        super().__init__(seed)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
-#         # 使用 AdamW 优化器
-#         self.optimizer = optim.AdamW(
-#             self.model.parameters(),
-#             lr=0.002,
-#             weight_decay=1e-4,
-#             betas=(0.9, 0.999)
-#         )
-        
-#         self.loss_fn = nn.CrossEntropyLoss()
-#         self.train_simulated_games()
-
-#     def encode_state(self, states=None):
-#         if states is None:
-#             state_vector = np.zeros(130, dtype=np.float32)
-#             for slot, letter in self.correct_letters.items():
-#                 state_vector[ord(letter) - ord('a') + slot * 26] = 1
-#             for letter, invalid_slots in self.present_letters.items():
-#                 base_idx = ord(letter) - ord('a')
-#                 for slot in range(5):
-#                     if slot in invalid_slots:
-#                         state_vector[base_idx + slot * 26] = -0.5
-#                     else:
-#                         state_vector[base_idx + slot * 26] = 0.5
-#             for letter in self.absent_letters:
-#                 for slot in range(5):
-#                     state_vector[ord(letter) - ord('a') + slot * 26] = -1
-#             return torch.from_numpy(state_vector).to(self.device)
-#         else:
-#             batch_vectors = np.zeros((len(states), 130), dtype=np.float32)
-#             for i, (correct_letters, present_letters, absent_letters) in enumerate(states):
-#                 for slot, letter in correct_letters.items():
-#                     batch_vectors[i, ord(letter) - ord('a') + slot * 26] = 1
-#                 for letter, invalid_slots in present_letters.items():
-#                     base_idx = ord(letter) - ord('a')
-#                     for slot in range(5):
-#                         if slot in invalid_slots:
-#                             batch_vectors[i, base_idx + slot * 26] = -0.5
-#                         else:
-#                             batch_vectors[i, base_idx + slot * 26] = 0.5
-#                 for letter in absent_letters:
-#                     for slot in range(5):
-#                         batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1
-#             return torch.from_numpy(batch_vectors).to(self.device)
-
-#     def train_simulated_games(self):
-#         print("Training RDL model...")
-#         batch_size = 512  # 增大batch size
-#         num_epochs = 20
-#         valid_targets = random.sample(self.word_list, 5000)
-
-#         # 使用 CosineAnnealingWarmRestarts 调度器
-#         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
-#             self.optimizer,
-#             T_0=5,    # 第一次重启的周期长度
-#             T_mult=2  # 每次重启后周期长度翻倍
-#         )
-
-#         for epoch in range(num_epochs):
-#             self.model.train()
-#             total_loss = 0
-#             num_batches = len(valid_targets) // batch_size
+        # deeper and wider network
+        self.model = nn.Sequential(
+            nn.Linear(130, 1024),  # increase the width
+            nn.GELU(),  # use GELU activation
+            nn.BatchNorm1d(1024, momentum=0.1),  # change BatchNorm momentum
+            nn.Dropout(0.2),  # lower dropout rate in order to increase capacity
             
-#             for _ in range(batch_size):
-#                 states = []
-#                 target_indices = []
-#                 target_words = random.sample(valid_targets, batch_size)
+            nn.Linear(1024, 512),
+            nn.GELU(),
+            nn.BatchNorm1d(512, momentum=0.1),
+            nn.Dropout(0.2),
+            
+            nn.Linear(512, 256),
+            nn.GELU(),
+            nn.BatchNorm1d(256, momentum=0.1),
+            nn.Dropout(0.1),
+            
+            nn.Linear(256, 128),
+            nn.GELU(),
+            nn.BatchNorm1d(128, momentum=0.1),
+            
+            nn.Linear(128, len(self.word_list))
+        ).to(self.device)
+        
+        # use improved optimizer settings
+        self.optimizer = optim.AdamW(
+            self.model.parameters(), 
+            lr=0.002,  # lower learning rate to stabilize training
+            weight_decay=2e-5,  # lower weight decay to prevent over-regularization
+            betas=(0.9, 0.98)  # adjust beta values for a more stable optimizer
+        )
+        
+        # use Label Smoothing Cross Entropy loss
+        self.loss_fn = LabelSmoothingCrossEntropy(smoothing=0.1)
+        
+        self.train_simulated_games()
 
-#                 for target_word in target_words:
-#                     correct_letters, present_letters, absent_letters = {}, {}, set()
-#                     num_known = random.randint(1, 3)
-#                     positions = random.sample(range(5), num_known)
+    def encode_state(self, states=None):
+        if states is None:
+            state_vector = np.zeros(130, dtype=np.float32)
+            # enhance the signal strength for correct letters
+            for slot, letter in self.correct_letters.items():
+                state_vector[ord(letter) - ord('a') + slot * 26] = 1.0
+            
+            for letter, invalid_slots in self.present_letters.items():
+                base_idx = ord(letter) - ord('a')
+                for slot in range(5):
+                    if slot in invalid_slots:
+                        state_vector[base_idx + slot * 26] = -0.7  # increase the negative signal strength
+                    else:
+                        state_vector[base_idx + slot * 26] = 0.7   # increase the positive signal strength
+            
+            for letter in self.absent_letters:
+                for slot in range(5):
+                    state_vector[ord(letter) - ord('a') + slot * 26] = -1.0
+            
+            return torch.from_numpy(state_vector).to(self.device)
+        else:
+            batch_vectors = np.zeros((len(states), 130), dtype=np.float32)
+            for i, (correct_letters, present_letters, absent_letters) in enumerate(states):
+                for slot, letter in correct_letters.items():
+                    batch_vectors[i, ord(letter) - ord('a') + slot * 26] = 1.0
+                
+                for letter, invalid_slots in present_letters.items():
+                    base_idx = ord(letter) - ord('a')
+                    for slot in range(5):
+                        if slot in invalid_slots:
+                            batch_vectors[i, base_idx + slot * 26] = -0.7
+                        else:
+                            batch_vectors[i, base_idx + slot * 26] = 0.7
+                
+                for letter in absent_letters:
+                    for slot in range(5):
+                        batch_vectors[i, ord(letter) - ord('a') + slot * 26] = -1.0
+            
+            return torch.from_numpy(batch_vectors).to(self.device)
+
+    def train_simulated_games(self):
+        train_start_time = time.time()
+        print("Training RDL model C...")
+        batch_size = 768  # increase the batch size to improve training efficiency
+        num_epochs = 100  # increase the number of epochs to improve convergence
+        valid_targets = random.sample(self.word_list, 8000)  # increase the number of training samples
+        
+        # use One Cycle learning rate scheduler
+        scheduler = optim.lr_scheduler.OneCycleLR(
+            self.optimizer,
+            max_lr=0.003,
+            epochs=num_epochs,
+            steps_per_epoch=len(valid_targets) // batch_size,
+            pct_start=0.3,  # 30% of the time for warm-up
+            anneal_strategy='cos',
+            div_factor=25.0,
+            final_div_factor=1000.0
+        )
+        
+        # include early stopping mechanism
+        best_loss = float('inf')
+        patience = 5
+        patience_counter = 0
+        
+        for epoch in range(num_epochs):
+            self.model.train()
+            total_loss = 0
+            
+            for _ in range(len(valid_targets) // batch_size):
+                states = []
+                target_indices = []
+                target_words = random.sample(valid_targets, batch_size)
+                
+                # adjutted sample generation strategy
+                for target_word in target_words:
+                    correct_letters, present_letters, absent_letters = {}, {}, set()
+                    # dynamically determine the number of known letters
+                    known_info = random.choices(
+                        [2, 3, 4],
+                        weights=[0.3, 0.4, 0.3],  
+                        k=1
+                    )[0]
                     
-#                     for i in positions:
-#                         if random.random() < 0.6:
-#                             correct_letters[i] = target_word[i]
-#                         else:
-#                             present_letters.setdefault(target_word[i], set()).add(i)
-
-#                     potential_absent = set(chr(i) for i in range(97, 123)) - set(target_word)
-#                     absent_letters.update(random.sample(list(potential_absent), 
-#                                                      random.randint(3, 6)))
-
-#                     states.append((correct_letters, present_letters, absent_letters))
-#                     target_indices.append(self.word_list.index(target_word))
-
-#                 state_vectors = self.encode_state(states)
-#                 target_indices = torch.tensor(target_indices, dtype=torch.long, device=self.device)
-
-#                 self.optimizer.zero_grad()
-#                 word_scores = self.model(state_vectors)
-#                 loss = self.loss_fn(word_scores, target_indices)
-#                 loss.backward()
+                    positions = random.sample(range(5), known_info)
+                    
+                    # portion of correct letters
+                    for i in positions:
+                        if random.random() < 0.7:  # increase the probability of correct letters
+                            correct_letters[i] = target_word[i]
+                        else:
+                            present_letters.setdefault(target_word[i], set()).add(i)
+                    
+                    # a more aggressive strategy for absent letters
+                    remaining_letters = set(chr(i) for i in range(97, 123)) - set(target_word)
+                    # choose absent letters based on common letter frequency
+                    common_letters = set('etaoinshrdlcumwfgypbvkjxqz')
+                    priority_absent = list(remaining_letters & common_letters)
+                    if priority_absent:
+                        absent_letters.update(random.sample(priority_absent, 
+                                                        min(6, len(priority_absent))))
+                    
+                    states.append((correct_letters, present_letters, absent_letters))
+                    target_indices.append(self.word_list.index(target_word))
                 
-#                 # 更激进的梯度裁剪
-#                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=0.5)
+                state_vectors = self.encode_state(states)
+                target_indices = torch.tensor(target_indices, dtype=torch.long, device=self.device)
                 
-#                 self.optimizer.step()
-#                 scheduler.step()  # 每个batch都更新学习率
+                self.optimizer.zero_grad()
+                word_scores = self.model(state_vectors)
+                loss = self.loss_fn(word_scores, target_indices)
                 
-#                 total_loss += loss.item()
+                loss.backward()
+                # use a more aggressive gradient clipping threshold
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=2.0)
+                
+                self.optimizer.step()
+                scheduler.step()
+                total_loss += loss.item()
+            
+            avg_loss = total_loss / (len(valid_targets) // batch_size)
+            print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
+            
+            # early stopping mechanism
+            if avg_loss < best_loss:
+                best_loss = avg_loss
+                patience_counter = 0
+            else:
+                patience_counter += 1
+                
+            if patience_counter >= patience:
+                print("Early stopping triggered")
+                break
+            
+            if avg_loss < 0.006:  # adjust the target loss threshold
+                print("Reached target loss threshold. Stopping training.")
+                break
 
-#             avg_loss = total_loss / batch_size
-#             print(f"Epoch {epoch + 1}, Avg Loss: {avg_loss:.4f}")
+        train_end_time = time.time()
+        print(f"Training took {train_end_time - train_start_time:.2f} seconds")
 
-#     def generate_next_guess(self):
-#         valid_words = self.get_valid_words()
-#         if not valid_words:
-#             return None
-#         self.model.eval()
-#         with torch.no_grad():
-#             state_vector = self.encode_state()
-#             word_scores = self.model(state_vector.unsqueeze(0)).squeeze()
-#             valid_scores = [(word, word_scores[self.word_list.index(word)].item()) for word in valid_words]
-#             best_word = max(valid_scores, key=lambda x: x[1])[0]
-#             print(f"Best RDL guess: {best_word}")
-#             return best_word
+    def generate_next_guess(self):
+        valid_words = self.get_valid_words()
+        if not valid_words:
+            return None
+            
+        self.model.eval()
+        with torch.no_grad():
+            state_vector = self.encode_state()
+            word_scores = self.model(state_vector.unsqueeze(0)).squeeze()
+            
+            # add heuristic enhancements
+            valid_scores = []
+            for word in valid_words:
+                base_score = word_scores[self.word_list.index(word)].item()
+                
+                # adjust the score based on the diversity of letters
+                unique_letters = len(set(word))
+                diversity_bonus = unique_letters / 5.0 * 0.2
+                
+                # adjust the score based on the frequency of common letters
+                common_letters = sum(1 for c in word if c in 'etaoinshrdl')
+                frequency_bonus = common_letters / 5.0 * 0.1
+                
+                final_score = base_score + diversity_bonus + frequency_bonus
+                valid_scores.append((word, final_score))
+            
+            best_word = max(valid_scores, key=lambda x: x[1])[0]
+            print(f"Best Enhanced guess: {best_word}")
+            return best_word
 
+
+class LabelSmoothingCrossEntropy(nn.Module):
+    def __init__(self, smoothing=0.1):
+        super().__init__()
+        self.smoothing = smoothing
+        
+    def forward(self, x, target):
+        confidence = 1. - self.smoothing
+        logprobs = F.log_softmax(x, dim=-1)
+        nll_loss = -logprobs.gather(dim=-1, index=target.unsqueeze(1))
+        nll_loss = nll_loss.squeeze(1)
+        smooth_loss = -logprobs.mean(dim=-1)
+        loss = confidence * nll_loss + self.smoothing * smooth_loss
+        return loss.mean()
 
 # Benchmarking and Plotting
 def benchmark_solver(solver_classes, num_trials=10):
     results = []
-    for trial in range(num_trials):
-        print(f"\nStarting trial {trial + 1} of {num_trials}...")
-        seed = random.randint(1, 1000000)  # Generate a seed for this trial
-        print(f"Using seed: {seed}")
-        for solver_class in solver_classes:
-            print(f"\nTesting solver: {solver_class.__name__}")
-            solver = solver_class(seed=seed)  # Use the same seed for all solvers
+    for solver_class in solver_classes:
+        total_training_time = time.time()
+        solver = solver_class()  # 训练时间会记录在这里
+        training_time = time.time() - total_training_time
+        print(f"\n{solver_class.__name__} training time: {training_time:.2f} seconds")
+        
+        solving_times = []
+        for trial in range(num_trials):
+            print(f"\nStarting trial {trial + 1} of {num_trials}...")
+            seed = random.randint(1, 1000000)
+            solver = solver_class(seed=seed)
             start_time = time.time()
             success = solver.solve()
-            end_time = time.time()
+            solve_time = time.time() - start_time
+            solving_times.append(solve_time)
+            
             results.append({
                 "solver": solver_class.__name__,
                 "success": success,
                 "attempts": len(solver.previous_guesses) if success else 6,
-                "time": end_time - start_time,
-                "seed": seed  # Record the seed for debugging
+                "training_time": training_time,
+                "solve_time": solve_time
             })
-    
-    df = pd.DataFrame(results)
-    # 设置显示格式：success列显示6位小数，其他保持原样
-    pd.set_option('display.float_format', lambda x: f'{x:.6f}' if 'success' in str(x) else f'{x:.4f}')
-    return df
+            
+        avg_solve_time = sum(solving_times) / len(solving_times)
+        print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
 
 def plot_results(results, metrics=["attempts", "time"]):
     for metric in metrics:
@@ -845,11 +752,12 @@ def plot_results(results, metrics=["attempts", "time"]):
         plt.suptitle("")
         plt.xlabel("Solver")
         plt.ylabel(metric.capitalize())
-        plt.show()
+        # 保存到文件而不是显示
+        plt.savefig(f'{metric}_comparison.png')
+        plt.close()  # 关闭图形，释放内存
 
 if __name__ == "__main__":
-    # solver_classes = [WordleSolver, WordleSolverML, WordleSolverRDL]
-    solver_classes = [WordleSolver, WordleSolverRDL]
+    solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_B, WordleSolverRDL_C]
     results = benchmark_solver(solver_classes, num_trials=10)
     print("\nAggregated Results:")
     print(results.groupby("solver").mean())
