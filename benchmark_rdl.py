@@ -988,36 +988,36 @@ class WordleSolverRDL_A2(WordleSolverBase):
             return best_word
 
 # Benchmarking and Plotting
-def benchmark_solver(solver_classes, num_trials=10):
-    results = []
-    for solver_class in solver_classes:
-        total_training_time = time.time()
-        solver = solver_class() 
-        training_time = time.time() - total_training_time
-        print(f"\n{solver_class.__name__} training time: {training_time:.2f} seconds")
+# def benchmark_solver(solver_classes, num_trials=10):
+#     results = []
+#     for solver_class in solver_classes:
+#         total_training_time = time.time()
+#         solver = solver_class() 
+#         training_time = time.time() - total_training_time
+#         print(f"\n{solver_class.__name__} training time: {training_time:.2f} seconds")
         
-        solving_times = []
-        for trial in range(num_trials):
-            print(f"\nStarting trial {trial + 1} of {num_trials}...")
-            seed = random.randint(1, 1000000)
-            solver = solver_class(seed=seed)
-            start_time = time.time()
-            success = solver.solve()
-            solve_time = time.time() - start_time
-            solving_times.append(solve_time)
+#         solving_times = []
+#         for trial in range(num_trials):
+#             print(f"\nStarting trial {trial + 1} of {num_trials}...")
+#             seed = random.randint(1, 1000000)
+#             solver = solver_class(seed=seed)
+#             start_time = time.time()
+#             success = solver.solve()
+#             solve_time = time.time() - start_time
+#             solving_times.append(solve_time)
             
-            results.append({
-                "solver": solver_class.__name__,
-                "success": success,
-                "attempts": len(solver.previous_guesses) if success else 6,
-                "training_time": training_time,
-                "solve_time": solve_time
-            })
+#             results.append({
+#                 "solver": solver_class.__name__,
+#                 "success": success,
+#                 "attempts": len(solver.previous_guesses) if success else 6,
+#                 "training_time": training_time,
+#                 "solve_time": solve_time
+#             })
             
-        avg_solve_time = sum(solving_times) / len(solving_times)
-        print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
+#         avg_solve_time = sum(solving_times) / len(solving_times)
+#         print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
 
-def benchmark_solver(solver_classes, num_trials=10):
+def benchmark_solver(solver_classes, num_trials=1):
     results = []
     for solver_class in solver_classes:
         total_training_time = time.time()
@@ -1046,8 +1046,6 @@ def benchmark_solver(solver_classes, num_trials=10):
         avg_solve_time = sum(solving_times) / len(solving_times)
         print(f"{solver_class.__name__} average solving time: {avg_solve_time:.2f} seconds")
     
-    # Convert results to DataFrame
-    import pandas as pd
     return pd.DataFrame(results)
 
 def plot_results(results, metrics=["attempts", "time"]):
