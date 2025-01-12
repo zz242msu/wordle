@@ -265,7 +265,7 @@ class WordleSolverRDL(WordleSolverBase):
 
     
 # A. deeper network + more aggressive optimizer settings
-class WordleSolverRDL(WordleSolverBase):
+class WordleSolverRDL_A(WordleSolverBase):
     def __init__(self, seed=None):
         super().__init__(seed)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
