@@ -265,16 +265,15 @@ class WordleSolverRDL(WordleSolverBase):
 
     
 # A. deeper network + more aggressive optimizer settings
-class WordleSolverRDL_A(WordleSolverBase):
+class WordleSolverRDL(WordleSolverBase):
     def __init__(self, seed=None):
         super().__init__(seed)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        
-        # deeper network
+
         self.model = nn.Sequential(
-            nn.Linear(130, 768),  # deepen the first layer
+            nn.Linear(130, 768),  
             nn.ReLU(),
-            nn.BatchNorm1d(768),  # add BatchNorm
+            nn.BatchNorm1d(768),  
             nn.Dropout(0.3),
             nn.Linear(768, 384),
             nn.ReLU(),
@@ -285,11 +284,10 @@ class WordleSolverRDL_A(WordleSolverBase):
             nn.BatchNorm1d(192),
             nn.Linear(192, len(self.word_list))
         ).to(self.device)
-        
-        # use a more aggressive optimizer setting
+
         self.optimizer = optim.AdamW(
             self.model.parameters(), 
-            lr=0.003,  # a higher learning rate
+            lr=0.003,  
             weight_decay=1e-4,
             betas=(0.9, 0.999)
         )
@@ -330,24 +328,22 @@ class WordleSolverRDL_A(WordleSolverBase):
             return torch.from_numpy(batch_vectors).to(self.device)
 
     def train_simulated_games(self):
-        train_start_time = time.time()
         print("Training RDL model A...")
-        batch_size = 512  # keep the batch size
-        num_epochs = 80   # increase the number of epochs
-        valid_targets = random.sample(self.word_list, 6000)  # increase the number of training samples
+        batch_size = 512  
+        num_epochs = 80   
+        valid_targets = random.sample(self.word_list, 6000)  
 
-        # use a more aggressive learning rate scheduler
         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             self.optimizer,
-            T_0=10,    # first restart period
-            T_mult=2,  # increase the period after each restart
-            eta_min=1e-6  # minimum learning rate
+            T_0=10,    
+            T_mult=2,  
+            eta_min=1e-6  
         )
 
         for epoch in range(num_epochs):
             self.model.train()
             total_loss = 0
-            
+
             for _ in range(len(valid_targets) // batch_size):
                 states = []
                 target_indices = []
@@ -357,7 +353,7 @@ class WordleSolverRDL_A(WordleSolverBase):
                     correct_letters, present_letters, absent_letters = {}, {}, set()
                     num_known = random.randint(2, 4)
                     positions = random.sample(range(5), num_known)
-                    
+
                     for i in positions:
                         if random.random() < 0.65:
                             correct_letters[i] = target_word[i]
@@ -377,10 +373,10 @@ class WordleSolverRDL_A(WordleSolverBase):
                 self.optimizer.zero_grad()
                 word_scores = self.model(state_vectors)
                 loss = self.loss_fn(word_scores, target_indices)
-                
+
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
-                
+
                 self.optimizer.step()
                 scheduler.step()
                 total_loss += loss.item()
@@ -391,9 +387,6 @@ class WordleSolverRDL_A(WordleSolverBase):
             if avg_loss < 0.008:
                 print("Reached target loss threshold. Stopping training.")
                 break
-
-        train_end_time = time.time()
-        print(f"Training took {train_end_time - train_start_time:.2f} seconds")
 
     def generate_next_guess(self):
         valid_words = self.get_valid_words()
@@ -865,7 +858,7 @@ class WordleSolverRDL_A2(WordleSolverBase):
         train_start_time = time.time()
         print("Training RDL model A2...")
         batch_size = 512  # Same as A
-        num_epochs = 80   # Same as A
+        num_epochs = 120   
         valid_targets = random.sample(self.word_list, 6000)  # Same as A
         
         # Only significant change: improved scheduler
@@ -1012,7 +1005,8 @@ if __name__ == "__main__":
     pd.set_option('display.width', None)
     pd.set_option('display.max_rows', None)
     
-    solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_A2]
+    # solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_A2]
+    solver_classes = [WordleSolver, WordleSolverRDL_A, WordleSolverRDL_B]
     results_df = benchmark_solver(solver_classes, num_trials=20)
     
     print("\nAggregated Results:")
