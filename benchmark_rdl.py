@@ -1005,8 +1005,7 @@ if __name__ == "__main__":
     pd.set_option('display.width', None)
     pd.set_option('display.max_rows', None)
     
-    # solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_A2]
-    solver_classes = [WordleSolver, WordleSolverRDL_A]
+    solver_classes = [WordleSolver, WordleSolverRDL, WordleSolverRDL_A, WordleSolverRDL_B, WordleSolverRDL_C, WordleSolverRDL_A2]
     results_df = benchmark_solver(solver_classes, num_trials=10)
     
     print("\nAggregated Results:")
